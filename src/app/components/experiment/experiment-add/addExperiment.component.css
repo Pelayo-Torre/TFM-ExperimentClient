@@ -1,0 +1,81 @@
+#divPrin{
+    margin-right: 3%;
+    margin-left: 3%;
+    margin-top: 1%;
+    margin-bottom: 50px;
+}
+
+#boxButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#formButton{
+    margin-bottom: 4%;
+}
+
+.labelrbutton {
+    margin-right: 15px;
+}
+
+.containerAll{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.containerDD{
+    width: 33.3%;
+}
+
+.demographicData{
+    width: 100%;
+    margin-right: 2%;
+}
+
+.value, .type, .delete{
+    display: inline-block;
+}
+
+.value{
+    width: 48%;
+    margin-right: 1%;
+}
+
+.type{
+    width: 38%;
+    margin-right: 1%;
+}
+
+.delete{
+    width: 10%;
+}
+
+#addDemographicData{
+    width: 230px;
+}
+
+@media only screen and (min-width: 551px) and (max-width: 850px) {
+
+    .containerDD{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+
+    .containerDD{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 250px) {
+
+    #addDemographicData{
+        width: 100px;
+    }
+}
+
+

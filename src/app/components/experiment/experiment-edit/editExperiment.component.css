@@ -1,0 +1,152 @@
+
+#boxInputs, #status{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#labelTitle{
+    margin-top: 2%;
+}
+
+.boxButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#edition, #acceptEdition, #cancelEdition{
+    margin-bottom: 4%;
+}
+
+#boxForm {
+    margin-bottom: 4%;
+}
+
+#acceptEdition{
+    margin-right: 4px;
+}
+
+#cancelEdition{
+    margin-left: 4px;
+}
+
+.CREATED, .OPEN, .CLOSED, .DELETED{
+    padding: 3px 7px;
+    font-size: 0.9em;
+}
+
+.CREATED{
+    background: #feedaf;
+    color: #8a5340;
+    
+}
+
+.OPEN{
+    background-color: #c8e6c9;
+    color: #256029;
+}
+
+.CLOSED, .DELETED{
+    background-color: #ffcdd2;
+    color: #c63737;
+}
+
+/* TOOLBAR */
+#toolbar{
+    width: 100%;
+}
+
+#titleToolbar{
+    display: inline-block;
+    width: 70%;
+    text-align: left;
+}
+
+#buttonsToolbar{
+    display: inline-block;
+    width: 30%;
+    text-align: right;
+}
+
+/* Datos demográficos */
+
+.containerAll{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.containerDD{
+    width: 33.3%;
+}
+
+.demographicData{
+    width: 100%;
+    margin-right: 2%;
+}
+
+.value, .type, .delete{
+    display: inline-block;
+}
+
+.value{
+    width: 48%;
+    margin-right: 1%;
+}
+
+.type{
+    width: 38%;
+    margin-right: 1%;
+}
+
+.delete{
+    width: 10%;
+}
+
+#addDemographicData{
+    width: 230px;
+}
+
+#download{
+    color: #0275d8;
+    text-decoration: none;
+}
+
+#download:hover{
+    color: #01447e;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+@media only screen and (min-width: 800px) and (max-width: 1100px) {
+
+    .containerDD{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 799px) {
+
+    .containerDD{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:500px){
+    
+    #titleToolbar{
+        display: inline;
+        width: 100%;
+        text-align: left;
+    }
+    
+    #buttonsToolbar{
+        display: inline;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+}

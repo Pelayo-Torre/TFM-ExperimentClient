@@ -1,0 +1,70 @@
+#button{
+    color: #f8f9fa;
+    background-color: #f8f9fa;
+}
+
+.headerPanel, header {
+    width: 100%;
+}
+
+.title{
+    display: inline-block;
+    width: 70%;
+    text-align: left;
+}
+
+.actions{
+    display: inline-block;
+    width: 30%;
+    text-align: right;
+}
+
+#title{
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+}
+
+#buttonNoteAdd{
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+}
+
+button{
+    height: 32px;
+}
+
+
+#boxButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:400px){
+    #title{
+        display: inline;
+        width: 100%;
+        text-align: left;
+    }
+    
+    #buttonNoteAdd{
+        display: inline;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+
+    .title{
+        display: inline;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .actions{
+        display: inline;
+        width: 100%;
+        text-align: left;
+    }
+}

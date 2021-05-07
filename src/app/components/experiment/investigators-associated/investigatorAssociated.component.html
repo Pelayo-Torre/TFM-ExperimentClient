@@ -1,0 +1,83 @@
+<p-toast></p-toast>
+<p-toast position="top-right" key="tl"></p-toast>
+
+<div id="headerInvestigators">
+    <div id="titleInvestigators">
+        <h3>{{ 'experiment.investigatorsAssociated.title' | translate }}</h3>
+    </div>
+    <div *ngIf="manager === true" id="addAssociation">
+        <button pButton class="p-button-sm p-button-primary" label="{{ 'experiment.investigatorsAssociated.newAssociation' | translate }}" icon="pi pi-plus" type="button" (click)="showModalInvestigators()" ></button>
+    </div>
+</div>
+<div   id="divInvestigators">
+    <p-table class="table" [columns]="cols" [value]="investigators" [scrollable]="true"  scrollHeight="520px"
+    [virtualScroll]="false" styleClass="p-datatable-gridlines" [responsive]="true">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [ngStyle]="{'width': col.width}" class="headerTable">
+                    {{ 'experiment.investigatorsAssociated.' +  col.header | translate }}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+                    <span *ngIf="col.field === 'manager' && rowData[col.field] === true"><strong>{{ 'experiment.investigatorsAssociated.gestor' | translate }}</strong></span>
+                    <span *ngIf="col.field === 'manager' && rowData[col.field] === false"></span>
+                    <span *ngIf="col.field !== 'manager'">{{rowData[col.field]}}</span>
+                    <button *ngIf="col.field === 'cancel' && manager === true"  type="button" title="{{ 'experiment.investigatorsAssociated.cancelAssociationTitle' | translate }}" class="buttonTableAction"  (click)="showModalCancelAssociation(rowData)"><i class="pi pi-times"></i></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4"><strong>{{ 'experiment.investigatorsAssociated.notInvestigators' | translate }}</strong></td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <div id="totalInvestigators">
+        <span >Total: {{ investigators.length }}</span>
+    </div>
+</div>
+
+<!-- VENTANA MODAL INVITAR A INVESTIGADOR -->
+<p-dialog header="{{ 'experiment.newPetition.title' | translate }}" [(visible)]="displayModalNewAssociation" [modal]="true" [style]="{width: '60vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+    <p>{{ 'experiment.newPetition.parragraph' | translate }}</p>
+    <form [formGroup]="registerPetition" (ngSubmit)="register()">
+        <div class="p-fluid" id="boxInputs">
+            <div class="p-field">
+                <label for="title"><strong>{{ 'experiment.newPetition.mail' | translate }}</strong></label>
+                <div class="p-inputgroup">
+                    <input id="title" type="text" maxlength=25 formControlName="mail" pInputText>
+                </div>
+                <span class="spanErr" *ngIf="registerPetition.get('mail').touched && registerPetition.get('mail').hasError('required')">{{ 'experiment.newPetition.validations.mail' | translate }}</span>
+                <span class="spanErr" *ngIf="registerPetition.get('mail').touched && registerPetition.get('mail').hasError('pattern')">{{ 'experiment.newPetition.validations.mailFormat' | translate }}</span>
+                <span class="spanErr" *ngIf="petitionAlreadyExist">{{ 'experiment.newPetition.validations.mailAlreadyExist' | translate }}</span>
+
+            </div>
+            <div class="p-field-checkbox">
+                <p-checkbox name="group" value="true" formControlName="gestor" inputId="g"></p-checkbox>
+                <label for="g"><strong>{{ 'experiment.newPetition.manager' | translate }}</strong></label>
+            </div>
+        </div>
+        <div id="boxButton">
+            <p-button label="{{ 'experiment.newPetition.register' | translate }}" id="formButton" type="submit"  [disabled]=registerPetition.invalid></p-button>
+        </div>
+    </form>
+</p-dialog>
+
+
+
+<!-- VENTANA MODAL DE Cancelar una asociación -->
+<p-dialog header="{{ 'experiment.investigatorsAssociated.cancelAssociationTitle' | translate }}" [(visible)]="displayModalCancelAssociation" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p>{{ 'experiment.investigatorsAssociated.confirmCancelAssociation' | translate }}</p>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple icon="pi pi-check" (click)="cancelAssociation()" label="{{ 'experiment.investigatorsAssociated.cancelAssociationYes' | translate }}" class="p-button-danger"></button>
+        <button pButton pRipple icon="pi pi-times" (click)="displayModalCancelAssociation=false" label="{{ 'experiment.investigatorsAssociated.cancelAssociationNo' | translate }}" class="p-button-secondary"></button>
+    </ng-template>
+</p-dialog>
+
+
+
+

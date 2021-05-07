@@ -1,0 +1,458 @@
+{
+    "menu":{
+        "experiments" : {
+            "title" : "Experimentos",
+            "create": "Crear nuevo",
+            "list": "Lista"
+        },
+        "investigators" : "Investigadores",
+        "petitions": {
+            "title": "Peticiones",
+            "received" : "Recibidas",
+            "sent": "Enviadas"
+        },
+        "administration" : {
+            "title" : "Administración",
+            "requests" : "Solicitudes",
+            "newAdministrator" : "Nuevo Administrador"
+        },
+        "languaje": {
+            "title": "Idioma",
+            "spanish": "Español",
+            "english": "Inglés"
+        },
+        "out" : "Salir",
+        "login" : "Iniciar Sesión",
+        "register": "Registro",
+        "profile": {
+            "title" : "Perfil",
+            "firstParragraph" : "A continuación, se muestran sus datos personales en la aplicación:",
+            "name" : "Nombre:",
+            "surname" : "Apellidos",
+            "username" : "Nombre de usuario:",
+            "mail": "Correo electrónico",
+            "dataRegister" : "Fecha de registro",
+            "rol" : "Rol",
+            "evaluation": "Periodo de prueba",
+            "validated": "Validado",
+            "administrator": "Administrador",
+            "edit" : "Editar",
+            "cancel": "Cancelar",
+            "important": "Importante: ",
+            "mailAlreadyExist" : "El nombre de usuario especificado ya existe en el sistema",
+            "usernameAlreadyExist" : "El nombre de usuario especificado ya existe en el sistema",
+            "withRequest1": "La fecha de expiración de su periodo de prueba es el día",
+            "withRequest2": "Pulse",
+            "withRequest3": "aquí",
+            "withRequest4": "para solicitar la aprobación de cuenta.",
+            "withOutRequest" : "Su solicitud está pendiente de aprobación por parte de la administración del sistema",
+            "updateOk": "Sus datos han sido actualizados correctamente",
+            "updateNok": "Se ha producido un error al actualizar sus datos. Por favor, inténtelo de nuevo."
+        },
+        "request" : {
+            "sendOk" : "La solicitud ha sido registrada correctamente.",
+            "sendKo" : "Se ha producido un error registrando la solicitud. Por favor, inténtelo de nuevo."
+        }
+    },
+    "login" : {
+        "title" : "Inicio de sesión",
+        "mail" : "Correo electrónico",
+        "password" : "Contraseña",
+        "login" : "Iniciar sesión",
+        "validations" : {
+            "mail": "El correo electrónico es obligatorio",
+            "password" : "La contraseña es obligatoria",
+            "wrongCredentials" : "Credenciales introducidos incorrectos"
+        },
+        "loginErr" : "Se ha producido un error. Por favor, inténtelo de nuevo."
+    },
+    "investigator" : {
+        "register" : {
+            "title" : "Crear una cuenta",
+            "firstname": "Nombre",
+            "surnames" : "Apellidos",
+            "username": "Nombre de usuario",
+            "mail": "Correo electrónico",
+            "password": "Contraseña",
+            "repeatPassword": "Repetir contraseña",
+            "register": "Registrarse",
+            "validations": {
+                "name": "El nombre es obligatorio",
+                "surname": "Los apellidos son obligatorios",
+                "username": "El nombre de usuario es obligatorio",
+                "usernameAlreadyExist" : "El nombre de usuario introducido ya se encuentra registrado",
+                "mail": "El correo electrónico es obligatorio",
+                "mailAlreadyExist": "El correo electrónico introducido ya se encuentra registrado",
+                "mailFormat": "El formato del correo electrónico es incorrecto",
+                "password": "La contraseña es obligatoria",
+                "samesPasswords": "Las contraseñas deben ser iguales",
+                "passwordLength": "La contraseña debe tener al menos 8 caracteres"
+            },
+            "usernameErr": "Se ha producido un error en la comprobación del nombre de usuario. Por favor, inténtelo de nuevo",
+            "mailErr": "Se ha producido un error en la comprobación del correo electrónico del usuario. Por favor, inténtelo de nuevo",
+            "registerErr": "Se ha producido un error registrando al investigador. Por favor, inténtelo de nuevo",
+            "registerSuccess": "El registro se ha realizado correctamente."
+        }
+    },
+    "experiment" : {
+        "register" : {
+            "title" : "Crear un experimento",
+            "titleExperiment" : "Título",
+            "description" : "Descripción",
+            "newData" : "Añadir dato demográfico",
+            "value" : "Valor",
+            "type" : "Tipo",
+            "delete" : "Eliminar",
+            "STRING" : "Texto",
+            "DATE" : "Fecha",
+            "NUMBER" : "Número",
+            "register" : "Registrar",
+            "validations" : {
+                "title": "El título es obligatorio",
+                "description": "La descripción es obligatoria",
+                "valueErr": "El valor es un campo obligatorio"
+            },
+            "registerErr": "Se ha producido un error registrando el experimento. Por favor, inténtelo de nuevo",
+            "registerSuccess": "El experimento ha sido creado correctamente"
+
+        },
+        "list": {
+            "title" : "Lista de experimentos",
+            "header.titleExperiment" : "Título",
+            "header.description" : "Descripción",
+            "header.creationDate" : "Fecha de creación",
+            "header.state" : "Estado",
+            "header.actions" : "Acciones",
+            "newExperiment" : "Nuevo experimento",
+            "inputTitle" : "Escribe un título",
+            "inputDescription" : "Escribe una descripción",
+            "inputDate" : "Escribe una fecha",
+            "inputState" : "Seleccione un estado",
+            "states" : {
+                "open" : "ABIERTO",
+                "closed": "CERRADO",
+                "created": "CREADO",
+                "OPEN" : "ABIERTO",
+                "CLOSED": "CERRADO",
+                "CREATED": "CREADO"
+            },
+            "empty" : "No se han encontrado experimentos",
+            "edit": "Editar"
+        },
+        "binnacle" : {
+            "title" : "Bitácora",
+            "newNote" : "Nueva nota",
+            "update" : "Editar",
+            "delete" : "Eliminar",
+            "empty" : "No se han encontrado notas",
+            "registerNote" : {
+                "title" :"Crear una nota",
+                "titleNote": "Título",
+                "descriptionNote" : "Descripción",
+                "register" : "Registrar",
+                "validations": {
+                    "title": "El título es obligatorio",
+                    "description": "La descripción es obligatoria"
+                },
+                "registerErr": "Error al registrar la nota. Por favor, inténtelo de nuevo",
+                "registerSuccess": "La nota ha sido creada correctamente"
+            },
+            "updateNote" : {
+                "title" :"Actualizar datos",
+                "titleNote": "Título",
+                "descriptionNote" : "Descripción",
+                "update" : "Actualizar",
+                "validations": {
+                    "title": "El título es obligatorio",
+                    "description": "La descripción es obligatoria"
+                },
+                "updateErr": "Error al actualizar la nota. Por favor, inténtelo de nuevo",
+                "updateSuccess": "La nota ha sido actualizada correctamente"
+            },
+            "deleteNote": {
+                "title": "Confirmación",
+                "description" : "¿Desea eliminar la nota seleccionada?",
+                "yes": "Si",
+                "no": "No",
+                "deleteErr": "Error al eliminar la nota. Por favor, inténtelo de nuevo",
+                "deleteSuccess": "La nota ha sido eliminada correctamente"
+            }
+        },
+        "edit" : {
+            "title" : "Título",
+            "description" : "Descripción",
+            "newData" : "Añadir dato demográfico",
+            "value" : "Valor",
+            "type" : "Tipo",
+            "delete" : "Eliminar",
+            "STRING" : "Texto",
+            "DATE" : "Fecha",
+            "NUMBER" : "Número",
+            "register" : "Registrar",
+            "validations" : {
+                "title": "El título es obligatorio",
+                "description": "La descripción es obligatoria",
+                "valueErr": "El valor es un campo obligatorio"
+            },
+            "edit" : "Edición de datos",
+            "data" : "Calcular datos",
+            "status" : "Estado",
+            "creator" : "Creador",
+            "creationDate" : "Fecha de creación",
+            "script": "Fichero de toma de datos",
+            "download": "Descargar",
+            "update" : "Editar",
+            "accept" : "Aceptar",
+            "cancel" : "Cancelar",
+            "updateErr": "Error al actualizar el experimento. Por favor, inténtelo de nuevo",
+            "updateSuccess": "El experimento ha sido actualizado correctamente",
+            "loadDataErr": "Error al cargar los datos del experimento. Por favor, inténtelo de nuevo",
+            "confirmationChangeState" : "Confirmación",
+            "paragraphChangeState" : "¿Desea modificar el estado del experimento? No podrá realizar modificaciones en los datos del mismo."
+        },
+        "detail" : "Detalle del experimento",
+        "open": "El experimento fue abierto correctamente",
+        "close" :"El experimento fue cerrado correctamente",
+        "reopen" : "El experimento fue re-abierto correctamente",
+        "delete": "El experimento fue eliminado correctamente",
+        "openErr": "Error producido al abrir el experimento. Por favor, inténtelo de nuevo",
+        "closeErr": "Error al cerrar el experimento. Por favor, inténtelo de nuevo",
+        "reopenErr": "Error al re-abrir el experimento. Por favor inténtelo de nuevo",
+        "deleteErr": "Error al eliminar el experimento. Por favor, inténtelo de nuevo",
+        "downloadErr": "Error al descargar el script. Por favor, inténtelo de nuevo",
+        "OPEN": "ABRIR",
+        "CLOSE": "CERRAR",
+        "REOPEN": "RE-ABRIR",
+        "DELETE": "ELIMINAR",
+        "actions" : "Acciones",
+        "investigatorsAssociated": {
+            "title" : "Investigadores asociados",
+            "newAssociation" : "Nueva asociación",
+            "name": "Nombre",
+            "mail": "Email",
+            "username": "Usuario",
+            "rol" : "Rol",
+            "gestor": "Gestor",
+            "associationSuccess" : "La petición ha sido registrada correctamente",
+            "associationErr" : "Error al registrar la petición",
+            "filterName": "Escribe un nombre",
+            "filterMail": "Escribe un email",
+            "filterUsername": "Escribe un nombre de usuario",
+            "confirmAssociation": "Confirmar asociación",
+            "selectGestor": "Indique si el investigador será gestor marcando la siguiente casilla:",
+            "register": "Registrar",
+            "cancel": "Cancelar",
+            "notInvestigators": "No se han encontrado investigadores",
+            "cancelAssociation" : "",
+            "confirmCancelAssociation" : "¿Desea cancelar la asociación del investigador en el experimento?",
+            "cancelAssociationTitle" : "Cancelar asociación",
+            "newAssociationTitle" : "Nueva asociación",
+            "cancelAssociationYes": "Si",
+            "cancelAssociationNo": "No",
+            "cancelAssociationOk": "La asociación ha sido cancelada correctamente",
+            "cancelAssociationKo": "Error al cancelar la asociación. Por favor, inténtelo de nuevo"
+        },
+        "newPetition" : {
+            "title" : "Invitar a un investigador",
+            "parragraph" : "Escriba la dirección de correo electrónico del investigador para colaborar en el experimento.",
+            "mail" : "Correo electrónico",
+            "manager" : "Gestor",
+            "validations" : {
+                "mail" : "El correo electrónico es obligatorio",
+                "mailFormat": "El formato del correo electrónico es incorrecto",
+                "mailAlreadyExist" : "Ya se ha enviado una invitación al correo especificado."
+            },
+            "register" : "Registrar"
+        },
+        "data" : {
+            "selection" : {
+                "title" : "Selección de datos:",
+                "introduction" : "Seleccione los datos que quiera visualizar:",
+                "calculate": "Calcular",
+                "users": "Usuarios:",
+                "filters": "Filtros",
+                "data": "Datos a calcular:",
+                "scenes": "Escenas:",
+                "calculating": "Calculando datos...",
+                "selectAll": "Seleccionar todo"
+            },
+            "caption": "Leyenda:",
+            "strategys" : {
+                "1": "Tiempo total de escena",
+                "2": "Tiempo de reacción de escena",
+                "3": "Tiempo de reacción en un componente de selección",
+                "4": "Número de opciones ofertadas en un componente de selección",
+                "5": "Tiempo de reacción / Número de opciones",
+                "6": "Número de veces que el usuario cambió de opinión en un componente de selección",
+                "7": "Número de caracteres por segundo",
+                "8": "Número de palabras por segundo",
+                "9": "Número de caracteres eliminados",
+                "11": "Número de veces que se ha pulsado las flechas de desplazamiento de izquierda y derecha",
+                "13": "Distancia ideal entre la posición del ratón y el componente pulsado",
+                "14": "Distancia real entre la posición del ratón y el componente pulsado",
+                "15": "Diferencia entre la distancia real e ideal",
+                "16": "Tiempo de movimiento de ratón",
+                "17": "Velocidad del ratón sobre la distancia real",
+                "18": "Velocidad del ratón sobre la distancia ideal",
+                "19": "Correcciones del ratón",
+                "20": "Precisión del ratón en píxeles",
+                "21": "Precisión del ratón en %",
+                "22": "Número de cliks no producidos en componentes",
+                "23": "Desviación de la trayectoria: 1 (por encima), -1 (por debajo), 0 (sin desviación)"
+            },
+            "abbreviations": {
+                "1": "T.T escena (ms)",
+                "2": "T.R escena (ms)",
+                "3": "T.R selection (ms)",
+                "4": "Nº Opciones ofertadas",
+                "5": "T.R / Nº opciones",
+                "6": "Nº cambio de opinión",
+                "7": "Nº caracteres/segundo",
+                "8": "Nº palabras/segundo",
+                "9": "Nº caracteres eliminados",
+                "11": "Nº veces flechas izq y dch",
+                "13": "D. ideal posición ratón y comp",
+                "14": "D. real posición ratón y comp",
+                "15": "Diferencia D. real e ideal",
+                "16": "T. movimiento del ratón (ms)",
+                "17": "V. ratón/D.real",
+                "18": "V. ratón/D.ideal",
+                "19": "Correcciones del ratón",
+                "20": "Precisión píxeles",
+                "21": "Precisión % píxeles",
+                "22": "Nº clicks erróneos",
+                "23": "Deviation"
+            },
+            "filters" : {
+                "1": "Escena completa",
+                "4": "Datos demográficos completos"
+            },
+            "title": "Datos del experimento",
+            "button": "Nuevo cálculo",
+            "introduction" : "Datos calculados para la escena:",
+            "abbreviation": "Abreviatura",
+            "description": "Descripción",
+            "export" : "Exportar datos",
+            "calculateErr": "Error al calcular los datos. Por favor, inténtelo de nuevo",
+            "usersErr": "Error al obtener los usuarios. Por favor, inténtelo de nuevo",
+            "scenesErr": "Error al obtener las escenas. Por favor, inténtelo de nuevo",
+            "strategysErr": "Error al obtener las estrategias. Por favor, inténtelo de nuevo",
+            "filtersErr": "Error al obtener los filtros. Por favor, inténtelo de nuevo",
+            "demographicDataErr": "Error al obtener los datos demográficos. Por favor, inténtelo de nuevo",
+            "exportErr": "Error al exportar los datos. Por favor, inténtelo de nuevo",
+            "trace" : {
+                "title" : "Trazada"
+            }    
+        }
+    },
+    "petition": {
+        "sent": {
+            "title": "Peticiones enviadas",
+            "mail": "Investigador",
+            "titleExperiment": "Título",
+            "descriptionExperiment": "Descripción",
+            "shippingDate": "Fecha",
+            "statePetition": "Estado",
+            "rol": "Rol",
+            "actions": "",
+            "inputMail": "Escribe un correo electrónico",
+            "inputTitle" : "Escribe un título",
+            "inputDescription" : "Escribe una descripción",
+            "inputDate" : "Escribe una fecha",
+            "inputState" : "Seleccione un estado",
+            "manager": "Gestor",
+            "states" : {
+                "CANCELLED": "CANCELADA",
+                "PENDING" : "PENDIENTE",
+                "ACCEPTED": "ACEPTADA",
+                "REJECTED": "RECHAZADA"
+            },
+            "empty" : "No se han encontrado peticiones",
+            "confirmation": "Confirmación",
+            "cancelPetition": "¿Desea cancelar la petición?",
+            "yes": "Sí",
+            "no": "No",
+            "cancelSuccess": "La petición fue cancelada correctamente",
+            "cancelErr": "Error al cancelar la petición. Por favor, inténtelo de nuevo",
+            "cancelButton": "Cancelar"
+        },
+        "received": {
+            "title": "Peticiones recibidas",
+            "acceptSuccess": "La petición fue aceptada correctamente",
+            "acceptErr": "Error al aceptar la petición. Por favor, inténtelo de nuevo",
+            "rejectSuccess": "La petición fue rechazada correctamente",
+            "rejectErr": "Error al rechazar la petición. Por favor, inténtelo de nuevo",
+            "acceptPetition": "¿Desea aceptar la petición?",
+            "rejectPetition" : "¿Desea rechazar la petición?",
+            "acceptButton": "Aceptar",
+            "rejectButton": "Rechazar"
+        }
+    },
+    "administration" : {
+        "requests" : {
+            "title" : "Lista de solicitudes",
+            "header" : {
+                "name" : "Nombre",
+                "surname" : "Apellidos",
+                "username" : "Nombre de usuario",
+                "mail" : "Correo electrónico",
+                "acciones" : ""
+            },
+            "filters" : {
+                "name": "Escribe un nombre",
+                "surname" : "Escribe los apellidos",
+                "username" : "Escribe el nombre de usuario",
+                "mail" : "Escribe el correo electrónico"
+            },
+            "accept" : "Aceptar",
+            "reject" : "Rechazar",
+            "acceptOk" : "La solicitud ha sido aceptada correctamente",
+            "acceptKo" : "Se ha producido un error al aceptar la solicitud. Por favor, inténtelo de nuevo",
+            "rejectOk" : "La solicitud ha sido rechazada correctamente",
+            "rejectKo" : "Se ha producido un error al rechazar la solicitud. Por favor, inténtelo de nuevo",
+            "empty" : "No se han encontrado solcitudes",
+            "confirmationTitle" : "Confirmación",
+            "confirmation": "¿Desea aceptar la solicitud de aprobación de cuenta?",
+            "cancelRequest": "¿Desea cancelar la solicitud de aprobación de cuenta?",
+            "yes": "Sí",
+            "no": "No"
+        },
+        "addAdministrator" : {
+            "title" : "Nuevo administrador",
+            "header" : {
+                "name" : "Nombre",
+                "surname" : "Apellidos",
+                "username" : "Nombre de usuario",
+                "mail" : "Correo electrónico",
+                "acciones" : ""
+            },
+            "filters" : {
+                "name": "Escribe un nombre",
+                "surname" : "Escribe los apellidos",
+                "username" : "Escribe el nombre de usuario",
+                "mail" : "Escribe el correo electrónico"
+            },
+            "accept" : "Aceptar",
+            "acceptOk" : "Se ha registrado al investigador como administrador correctamente.",
+            "acceptKo" : "Se ha producido un error al registrar al investigador como administrador. Por favor, inténtelo de nuevo",
+            "empty" : "No se han encontrado investigadores",
+            "confirmationTitle" : "Confirmación",
+            "confirmation": "¿Desea convertir al investigador a administrador?",
+            "yes": "Sí",
+            "no": "No"
+        }
+    },
+    "errors" : {
+        "403" : "Error de permisos. Usted no tiene permiso para acceder al recurso solicitado."
+    },
+    "breadcrumbs": {
+        "home": "Inicio",
+        "newExperiment": "Nuevo experimento",
+        "detail": "Detalle experimento",
+        "selectionData": "Selección datos",
+        "calculateData": "Cálculo datos",
+        "petitionReceived": "Peticiones recibidas",
+        "petitionSent": "Peticiones enviadas"
+    },
+    "return": "Volver"
+}

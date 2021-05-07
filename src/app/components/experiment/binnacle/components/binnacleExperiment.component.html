@@ -1,0 +1,80 @@
+<p-toast></p-toast>
+<p-toast position="top-right" key="tl"></p-toast>
+<div id="header">
+    <div id="title">
+        <h3>{{ 'experiment.binnacle.title' | translate  }}</h3>
+    </div>
+    <div id="buttonNoteAdd">
+        <button pButton class="p-button-sm"  label="{{ 'experiment.binnacle.newNote' | translate  }}" (click)="showModalNote()" icon="pi pi-plus"></button>
+    </div>
+</div>
+<div id="contentTable">
+    <p-table #dt [columns]="cols" [value]="notes" [paginator]="true" [rows]="5" id="table" 
+     [responsive]="true" [showCurrentPageReport]="true" currentPageReportTemplate="Total: {totalRecords}">
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    <div class="p-shadow-4">
+                        <p-panel>
+                            <p-header class="headerPanel">
+                                <div class="title">
+                                    <span class="ui-panel-title"><strong> {{rowData['title']}}</strong></span>
+                                </div>
+                                <div class="actions">
+                                    <button pButton type="button" label="{{ 'experiment.binnacle.update' | translate  }}" class="p-button-text p-button-plain" icon="pi pi-pencil" (click)="showModalEditNote(rowData)"></button>
+                                    <button pButton type="button" label="{{ 'experiment.binnacle.delete' | translate  }}" class="p-button-text p-button-plain" icon="pi pi-trash" (click)="showModalDeleteNote(rowData)" > </button>
+                                </div>
+                            </p-header>
+                            <div>
+                                {{rowData['description']}}
+                            </div>
+                        </p-panel>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6"><strong>{{ 'experiment.binnacle.empty' | translate  }}</strong></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<!-- VENTANA MODAL DE AÑADIR Y EDITAR NOTA -->
+<p-dialog header="{{titleModalEditRegister}}" [(visible)]="displayModalNote" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+    <form [formGroup]="registerNote" (ngSubmit)="actionNote()">
+        <div id="divPrin">
+            <div class="p-fluid" id="boxInputs">
+                <div class="p-field">
+                    <label for="title"><strong>{{ 'experiment.binnacle.registerNote.titleNote' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <input id="title" type="text" maxlength=30 formControlName="title" pInputText>
+                    </div>
+                    <span class="spanErr" *ngIf="registerNote.get('title').touched && registerNote.get('title').hasError('required')">{{ 'experiment.binnacle.registerNote.validations.title' | translate }}</span>
+                </div>
+                <div class="p-field">
+                    <label for="description"><strong>{{ 'experiment.binnacle.registerNote.descriptionNote' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <textarea id="description" rows="5" cols="30" pInputTextarea formControlName="description" autoResize="autoResize" maxlength=9999></textarea>
+                    </div>
+                    <span class="spanErr" *ngIf="registerNote.get('description').touched && registerNote.get('description').hasError('required')">{{ 'experiment.binnacle.registerNote.validations.description' | translate }}</span>
+                </div>
+            </div>
+            <div id="boxButton">
+                <p-button *ngIf="!updating" label="{{ 'experiment.binnacle.registerNote.register' | translate }}" id="formButton" type="submit"  [disabled]=registerNote.invalid></p-button>
+                <p-button *ngIf="updating" label="{{ 'experiment.binnacle.updateNote.update' | translate }}" id="formButton" type="submit"  [disabled]=registerNote.invalid></p-button>
+            </div>
+        </div>
+    </form>
+</p-dialog>
+
+<!-- VENTANA MODAL DE ELIMINAR UNA NOTA -->
+<p-dialog header="{{ 'experiment.binnacle.deleteNote.title' | translate }}" [(visible)]="displayDeleteConfirmation" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p>{{ 'experiment.binnacle.deleteNote.description' | translate }}</p>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple icon="pi pi-check" (click)="delete()" label="{{ 'experiment.binnacle.deleteNote.yes' | translate }}" class="p-button-danger"></button>
+        <button pButton pRipple icon="pi pi-times" (click)="displayDeleteConfirmation=false" label="{{ 'experiment.binnacle.deleteNote.no' | translate }}" class="p-button-secondary"></button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,44 @@
+
+<div id="alerts">
+    <p-messages  [(value)]="msgs" [enableService]="false"></p-messages>
+</div>
+
+<div id="widget-login">
+    <form [formGroup]="loginInvestigator" (ngSubmit)="identifyUser()">
+        <div id="divPrin">
+            <div class="p-shadow-7" id="boxForm" >
+                <div class="p-fluid" id="boxInputs">
+                    <div id="imgDiv"> 
+                        <img src="../../../../assets/img/icon.png"  class="d-inline-block align-top" alt="Icono aplicación" />
+                    </div>
+                    <div id="title" >
+                        <h3>{{ 'login.title' | translate }}</h3>
+                    </div>
+                    <div class="p-field">
+                        <label for="mail"><strong>{{ 'login.mail' | translate }}</strong></label>
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <input id="mail" type="text" formControlName="login" pInputText>
+                        </div>
+                        <span class="spanErr" *ngIf="loginInvestigator.get('login').touched && loginInvestigator.get('login').hasError('required')">{{ 'login.validations.mail' | translate }}</span>
+                    </div>
+                    <div class="p-field">
+                        <label for="password1"><strong>{{ 'login.password' | translate }}</strong></label>
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <input id="password1" formControlName="password" type="password" pInputText>
+                        </div>
+                        <span class="spanErr" *ngIf="loginInvestigator.get('password').touched && loginInvestigator.get('password').hasError('required')">{{ 'login.validations.password' | translate }}</span>
+                    </div>
+                    <div *ngIf="isLoginFailed">
+                        <span class="spanErr">{{ 'login.validations.wrongCredentials' | translate }}</span>
+                    </div>
+                    <div id="boxButton">
+                        <p-button label="{{ 'login.login' | translate }}" id="formButton" type="submit"  [disabled]=loginInvestigator.invalid></p-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,51 @@
+#divPrin{
+    margin-right: 3%;
+    margin-left: 3%;
+    margin-top: 1%;
+    margin-bottom: 50px;
+
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 40% 60%;
+}
+
+#divDatosGenerales{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#divInvestigadores{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#divBitacora{
+    grid-column: 1 / 3;
+    grid-row: 2;
+}
+
+
+@media screen and (max-width:1200px){
+
+    #divPrin{
+        grid-gap: 0px;
+        grid-template-columns: 100%;
+    }
+
+    #divDatosGenerales{
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    #divInvestigadores{
+        grid-column: 1;
+        grid-row: 2;
+        margin-bottom: 50px;
+    }
+    
+    #divBitacora{
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+}

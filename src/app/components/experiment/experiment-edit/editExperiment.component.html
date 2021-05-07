@@ -1,0 +1,128 @@
+<p-toast></p-toast>
+<p-toast position="top-right" key="tl"></p-toast>
+
+<div id="toolbar">
+    <div class="p-toolbar-group-left" id="titleToolbar"> 
+        <h3>{{ 'experiment.detail' | translate }}</h3>
+    </div>
+    <div *ngIf="manager === true" class="p-toolbar-group-right" id="buttonsToolbar">
+        <p-dropdown [options]="actions" [(ngModel)]="selectedAction" optionLabel="name" [showClear]="true" placeholder="{{ 'experiment.actions' | translate }}">
+            <ng-template let-action pTemplate="item">
+                <div class="action-item">
+                    <div><span >{{ 'experiment.' + action.value.name | translate }}</span></div>
+                </div>
+            </ng-template>
+        </p-dropdown>
+    </div>
+</div>
+<div id="divPrin" class="p-shadow-1">
+    <div  id="boxForm" >
+        <div class="p-fluid" id="boxInputs">
+            <div class="p-field">
+                <label for="title" id="labelTitle"><strong>{{ 'experiment.edit.title' | translate }}</strong></label>
+                <p>{{experiment.title}}</p>
+            </div>
+            <div class="p-field">
+                <label for="description"><strong>{{ 'experiment.edit.description' | translate }}</strong></label>
+                <p>{{experiment.description}}</p>
+            </div>
+            <div>
+                <label for="status"><strong>{{ 'experiment.edit.status' | translate }} </strong>
+                    <span class="{{experiment.status}}"> {{ 'experiment.list.states.' + experiment.status | translate  }} </span>
+                </label><br>
+                <label for="nameInvestigator"><strong>Creador  </strong>
+                    <span>{{ experiment.nameInvestigator }} {{experiment.surnameInvestigator}} ( {{ experiment.mailInvestigator }} )</span>
+                </label><br>
+                <label for="creationDateInvestigator"><strong>{{ 'experiment.edit.creationDate' | translate }}  </strong>
+                    <span>{{ experiment.creationDate | date: 'dd/MM/yyyy' }}</span>
+                </label><br>  
+                <label *ngIf="experiment.status === 'OPEN'" for="creationDateInvestigator"><strong>{{ 'experiment.edit.script' | translate }}  </strong>
+                    <a (click)="download()" id="download">{{ 'experiment.edit.download' | translate}}</a>
+                </label><br *ngIf="experiment.status === 'OPEN'">
+                <label for="creationDateInvestigator"><strong>Datos Demográficos:</strong></label><br>
+                <ul>
+                    <li *ngFor="let item of experiment.demographicData">
+                        <label for="dataD">{{ item.name }} : 
+                            <span>{{ 'experiment.edit.' + item.type | translate }}</span>
+                        </label><br>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+        <div class="boxButton" *ngIf="manager === true && experiment.status === 'CREATED'"  >
+            <button pButton type="button" class="p-button-secondary p-button-raised p-button-text" label="{{ 'experiment.edit.update' | translate }}" id="edition" (click)="activateEdition()" ></button>
+        </div>
+        <div class="boxButton" *ngIf="experiment.status === 'CLOSED' || experiment.status === 'OPEN'"  >
+            <button pButton type="button" class="p-button-secondary p-button-raised p-button-text" label="{{ 'experiment.edit.data' | translate }}" routerLink="/experiments/data/{{ experiment.id }}" ></button>
+        </div>
+        <br>
+    </div>
+</div>
+
+<p-dialog *ngIf="updating" header="{{ 'experiment.edit.edit' | translate }}" [(visible)]="updating" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+    <form [formGroup]="updateExperiment" (ngSubmit)="update()">
+        <div id="boxForm" >
+            <div id="boxInputs">
+                <div class="p-field">
+                    <label for="title"><strong>{{ 'experiment.edit.title' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <input id="title" type="text" maxlength=120 formControlName="title" pInputText>
+                    </div>
+                    <span class="spanErr" *ngIf="updateExperiment.get('title').touched && updateExperiment.get('title').hasError('required')">{{ 'experiment.register.validations.title' | translate }}</span>
+                </div>
+                <div class="p-field">
+                    <label for="description"><strong>{{ 'experiment.edit.description' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <textarea id="description" rows="3" cols="30" pInputTextarea formControlName="description" autoResize="autoResize" maxlength=450></textarea>
+                    </div>
+                    <span class="spanErr" *ngIf="updateExperiment.get('description').touched && updateExperiment.get('description').hasError('required')">{{ 'experiment.register.validations.description' | translate }}</span>
+                </div>
+
+                <button pButton class="p-button-text p-button-sm" type="button" id="addDemographicData" label="{{ 'experiment.register.newData' | translate }}" (click)="addDemographicData(null, null)" icon="pi pi-plus"></button>
+                
+                <div class="containerAll" >
+                    <div class="containerDD" formArrayName="demographicData" *ngFor="let data of updateExperiment.get('demographicData')['controls']; let i = index">
+                        <div [formGroupName]="i" >
+                            <div class="demographicData">
+                                <div class="value">
+                                    <label><strong>{{ 'experiment.edit.value' | translate }}</strong></label>
+                                    <input class="inputFilter" type="text" maxlength=40 formControlName="name" pInputText>
+                                </div>
+                                <div class="type">
+                                    <label for="type{{i}}"><strong>{{ 'experiment.edit.type' | translate }}</strong></label>
+                                    <p-dropdown formControlName="type" id="type{{i}}" autoWidth="false" [style]="{'width':'100%'}"  [options]="dataTypes" >
+                                        <ng-template let-option pTemplate="item">
+                                            <span>{{ 'experiment.edit.' + option.value | translate }}</span>
+                                        </ng-template>
+                                    </p-dropdown>
+                                </div>
+                                <div class="delete">
+                                    <button type="button" (click)="deleteDemographicData(i)" title="{{ 'experiment.register.delete' | translate }}"
+                                        class="buttonTableAction"><i class="pi pi-times"></i></button>
+                                </div>
+                            </div>
+                            <span class="spanErr" *ngIf="updateExperiment.get('demographicData')['controls'][i].get('name').touched && updateExperiment.get('demographicData')['controls'][i].get('name').hasError('required')">{{ 'experiment.edit.validations.valueErr' | translate }}</span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div id="boxButton">
+                <p-button label="{{ 'experiment.edit.update' | translate }}" id="formButton" type="submit"  [disabled]=updateExperiment.invalid></p-button>
+            </div>
+        </div>
+    </form>
+</p-dialog>
+
+
+
+<!-- VENTANA MODAL DE Cancelar una asociación -->
+<p-dialog header="{{ 'experiment.edit.confirmationChangeState' | translate }}" [(visible)]="displayModalOpenExperiment" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p>{{ 'experiment.edit.paragraphChangeState' | translate }}</p>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple icon="pi pi-check" (click)="openExperiment()" label="{{ 'experiment.investigatorsAssociated.cancelAssociationYes' | translate }}" class="p-button-danger"></button>
+        <button pButton pRipple icon="pi pi-times" (click)="displayModalOpenExperiment=false" label="{{ 'experiment.investigatorsAssociated.cancelAssociationNo' | translate }}" class="p-button-secondary"></button>
+    </ng-template>
+</p-dialog>

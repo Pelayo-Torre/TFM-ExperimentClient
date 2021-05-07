@@ -1,0 +1,25 @@
+<div>
+    <ul class="breadcrumb">
+        <li><a  routerLink="/experiments">{{ 'breadcrumbs.home' | translate }}</a></li>
+        <li>{{ 'breadcrumbs.detail' | translate }}</li>
+    </ul>
+</div>
+<div id="divPrin">
+
+    <div id="divDatosGenerales">
+        <!-- DIV DATOS GENERALES -->
+        <edit-experiment [idExperiment]="idExperiment" ></edit-experiment>
+    </div>
+
+    <div id="divInvestigadores" >
+        <!-- DIV INVESTIGADORES ASOCIADOS -->
+        <investigators-associated [idExperiment]="idExperiment"></investigators-associated> 
+    </div>
+
+    <div id="divBitacora">
+        <!-- DIV DE LA BITÁCORA -->
+        <binnacle-experiment [idExperiment]="idExperiment"></binnacle-experiment>
+    </div>
+    
+</div>
+

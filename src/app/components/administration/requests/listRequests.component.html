@@ -1,0 +1,64 @@
+<p-toast></p-toast>
+<p-toast position="top-right" ></p-toast>
+<div id="divPrin">
+    <div id="header">
+        <div id="title">
+            <h2>{{ 'administration.requests.title' | translate }}</h2>
+        </div>
+    </div>
+    <div id="contentTable">
+        <p-table #dt [columns]="cols" [value]="requests" [paginator]="true" [rows]="10" id="table" class="table"
+         [responsive]="true" styleClass="p-datatable-gridlines">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th class="headerTable" *ngFor="let col of columns" [ngStyle]="{'width': col.width}" >
+                        <span class="headerTitlesTable">{{ 'administration.requests.header.' + col.header | translate }}</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="headerTable" *ngFor="let col of columns" [ngSwitch]="col.field">
+                        <input class="inputFilter" *ngSwitchCase="'name'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'administration.requests.filters.name' | translate }}">
+                        <input class="inputFilter" *ngSwitchCase="'surname'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'administration.requests.filters.surname' | translate }}">
+                        <input class="inputFilter"*ngSwitchCase="'mail'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'administration.requests.filters.mail' | translate }}">
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData" >
+                    <td *ngFor="let col of columns" >                   
+                        <button type="button" (click) = "showModalAcceptRequest(rowData['id'])" title="{{ 'administration.requests.accept' | translate }}"
+                        *ngIf="col.field === 'acciones'" 
+                        class="buttonTableAction"><i class="pi pi-check"></i></button>
+                        <button type="button" (click) = "showModalRejectRequest(rowData['id'])" title="{{ 'administration.requests.reject' | translate }}"
+                        *ngIf="col.field === 'acciones'" 
+                        class="buttonTableAction"><i class="pi pi-times"></i></button>
+                        <span *ngIf="col.field !== 'acciones'"> {{rowData[col.field]}} </span>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5"><strong>{{ 'administration.requests.empty' | translate }}</strong></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<!-- VENTANA MODAL DE CONFIRMACIÓN ACEPTAR PETICIÓN-->
+<p-dialog header="{{ 'administration.requests.confirmationTitle' | translate }}" [(visible)]="displayModalAccept" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p>{{ 'administration.requests.confirmation' | translate }}</p>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple icon="pi pi-check" (click)="acceptRequest()" label="{{ 'administration.requests.yes' | translate }}" class="p-button-danger"></button>
+        <button pButton pRipple icon="pi pi-times" (click)="displayModalAccept=false" label="{{ 'administration.requests.no' | translate }}" class="p-button-secondary"></button>
+    </ng-template>
+</p-dialog>
+
+<!-- VENTANA MODAL DE CONFIRMACIÓN RECHAZAR PETICIÓN-->
+<p-dialog header="{{ 'administration.requests.confirmationTitle' | translate }}" [(visible)]="displayModalReject" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p>{{ 'administration.requests.cancelRequest' | translate }}</p>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple icon="pi pi-check" (click)="rejectRequest()" label="{{ 'administration.requests.yes' | translate }}" class="p-button-danger"></button>
+        <button pButton pRipple icon="pi pi-times" (click)="displayModalReject=false" label="{{ 'administration.requests.no' | translate }}" class="p-button-secondary"></button>
+    </ng-template>
+</p-dialog>

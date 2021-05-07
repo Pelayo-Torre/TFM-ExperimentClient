@@ -1,0 +1,131 @@
+<div>
+    <ul class="breadcrumb">
+        <li><a  routerLink="/experiments">{{ 'breadcrumbs.home' | translate }}</a></li>
+        <li><a  routerLink="/experiments/detail/{{idExperiment}}">{{ 'breadcrumbs.detail' | translate }}</a></li>
+        <li *ngIf="!isCalculate">{{ 'breadcrumbs.selectionData' | translate }}</li>
+        <li *ngIf="isCalculate">{{ 'breadcrumbs.calculateData' | translate }}</li>
+    </ul>
+</div>
+<p-toast></p-toast>
+<p-toast position="top-right" key="tl"></p-toast>
+<div id="divPrin">
+    <div *ngIf="!isCalculate && !showLoadData">
+        <div>
+            <h2>{{ 'experiment.data.selection.title' | translate }}</h2>
+        </div>
+        <p>{{ 'experiment.data.selection.introduction' | translate }}</p>
+        <div id="boxButton" *ngIf="!isCalculate">
+            <p-button *ngIf="activateData" label="{{ 'experiment.data.selection.calculate' | translate }}" id="btCalculate" (click)="calculate()"></p-button>
+            <p-button *ngIf="!activateData" label="{{ 'experiment.data.selection.calculate' | translate }}" id="btCalculate" [disabled]="true"></p-button>
+        </div>
+        <br>
+        <div class="selectionContainer">
+            <div id="users" class="p-shadow-2">
+                <h5 class="titleBox">{{ 'experiment.data.selection.users' | translate }}</h5>
+                <p-checkbox class="selectAll" (onChange)="checkUsers()" [binary]="true" label="{{ 'experiment.data.selection.selectAll' | translate }}" [(ngModel)]="selectAllUsers"></p-checkbox>
+                <hr>
+                <div class="box" *ngFor="let user of users">
+                    <p-checkbox  name="groupusers" value="{{user.sessionId}}" label="{{user.sessionId}}" [(ngModel)]="selectedUsers"></p-checkbox>
+                </div>
+            </div>
+            <div id="filters" class="p-shadow-2">
+                <h5 class="titleBox">{{ 'experiment.data.selection.filters' | translate }}</h5>
+                <p-checkbox class="selectAll" (onChange)="checkFilters()" [binary]="true" label="{{ 'experiment.data.selection.selectAll' | translate }}" [(ngModel)]="selectAllFilters"></p-checkbox>
+                <hr>
+                <div class="box" *ngFor="let filter of filters">
+                    <p-checkbox  name="groupfilters" value="{{filter.identifier}}" label="{{ 'experiment.data.filters.' + filter.identifier | translate }}" [(ngModel)]="selectedFilters"></p-checkbox>
+                </div>
+            </div>
+            <div id="strategys" class="p-shadow-2">
+                <h5 class="titleBox">{{ 'experiment.data.selection.data' | translate }}</h5>
+                <p-checkbox class="selectAll" (onChange)="checkStrategies()" [binary]="true" label="{{ 'experiment.data.selection.selectAll' | translate }}" [(ngModel)]="selectAllStrategies"></p-checkbox>
+                <hr>
+                <div class="box" *ngFor="let strategy of strategies">
+                    <p-checkbox  name="groupStrategies" value="{{strategy.identifier}}" label="{{ 'experiment.data.strategys.' + strategy.identifier | translate }}" [(ngModel)]="selectedStrategies"></p-checkbox>
+                </div>
+            </div>
+            <div id="scenes" class="p-shadow-2">
+                <h5 class="titleBox">{{ 'experiment.data.selection.scenes' | translate }}</h5>
+                <div class="box" *ngFor="let scene of scenes">
+                    <p-radioButton name="groupScenes" value="{{scene.scene}}" label="{{scene.scene}}" [(ngModel)]="sceneID"></p-radioButton>
+                </div>
+            </div> 
+        </div>
+
+    </div>
+
+    <div class="divSpinner" *ngIf="showLoadData">
+        <div class="divSpinnerH">
+            <h6>{{ 'experiment.data.selection.calculating' | translate }}</h6>
+            <p-progressSpinner ></p-progressSpinner>
+        </div>
+    </div>
+    
+
+    <div *ngIf="isCalculate && !showLoadData">
+        <div>
+            <h2>{{ 'experiment.data.title' | translate }}</h2>
+        </div>
+        <div id="boxButton" *ngIf="isCalculate">
+            <p-button label="{{ 'experiment.data.button' | translate }}" id="btCalculate" (click)="newCalculate()" ></p-button>
+        </div>
+        <br>
+        <div id="titleTable">
+            <h5>{{ 'experiment.data.introduction' | translate }} <strong>{{sceneID}}</strong></h5>
+            <button *ngIf="hayDatos" type="button" title="{{ 'experiment.data.export' | translate }}" class="buttonTableAction" (click)="exportData()"><i class="pi pi-file-excel" style="font-size: 1.5rem"></i></button>
+        </div>
+        <p *ngIf="!hayDatos">No se han encontrado datos.</p>
+        <div class="containerTable" *ngIf="hayDatos">
+            <div class="containerTable2">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="sticky-col first-col headerTable th">Usuario</th>
+                            <th class="headerTable th" *ngFor="let header of headers2">
+                                    {{ header.name }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let col of result | keyvalue">
+                            <td class="sticky-col first-col td"> <a type="button" (click)="trace(col.key)" class="userTrace">{{ col.key }}</a></td>
+                            <td class="td2" *ngFor="let value of col.value">
+                                {{ value }}
+                            </td>
+                
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        
+        <div *ngIf="hayDatos">
+            <h5 >{{ 'experiment.data.caption' | translate }}</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ 'experiment.data.abbreviation' | translate }}: {{ 'experiment.data.description' | translate }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let col of leyenda">
+                        <td>{{ col }}</td>        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- VENTANA MODAL DE Cancelar una asociación -->
+    <p-dialog *ngIf="showTrace" header="{{ 'experiment.data.trace.title' | translate }}" [(visible)]="showTrace" [modal]="true" [style]="{width: '90vw'}" [baseZIndex]="10000">
+        <div id="canvasDiv">
+            <experiment-data-trace-component [idExperiment]="idExperiment" [scene]="sceneID" [user]="user"></experiment-data-trace-component>
+        </div>
+        <ng-template pTemplate="footer">
+            <button pButton pRipple icon="pi pi-arrow-left" (click)="showTrace=false" label="{{ 'return' | translate }}" class="p-button-secondary"></button>
+        </ng-template>
+    </p-dialog>
+
+
+</div>

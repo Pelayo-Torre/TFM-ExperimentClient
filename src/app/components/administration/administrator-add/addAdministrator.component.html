@@ -1,0 +1,52 @@
+<p-toast></p-toast>
+<p-toast position="top-right" ></p-toast>
+<div id="divPrin">
+    <div id="header">
+        <div id="title">
+            <h2>{{ 'administration.addAdministrator.title' | translate }}</h2>
+        </div>
+    </div>
+    <div id="contentTable">
+        <p-table #dt [columns]="cols" [value]="investigators" [paginator]="true" [rows]="10" id="table" 
+         [responsive]="true" class="table" styleClass="p-datatable-gridlines" [showCurrentPageReport]="true" currentPageReportTemplate="Total: {totalRecords}">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th class="headerTable" *ngFor="let col of columns" [ngStyle]="{'width': col.width}" >
+                        <span class="headerTitlesTable">{{ 'administration.addAdministrator.header.' + col.header | translate }}</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="headerTable" *ngFor="let col of columns" [ngSwitch]="col.field">
+                        <input class="inputFilter" *ngSwitchCase="'name'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'administration.addAdministrator.filters.name' | translate }}">
+                        <input class="inputFilter" *ngSwitchCase="'surname'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'administration.addAdministrator.filters.surname' | translate }}">
+                        <input class="inputFilter"*ngSwitchCase="'mail'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'administration.addAdministrator.filters.mail' | translate }}">
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData" class="rowValue">
+                    <td *ngFor="let col of columns" >                   
+                        <button type="button" (click) = "showModal(rowData['id'])" title="{{ 'administration.addAdministrator.accept' | translate }}"
+                        *ngIf="col.field === 'acciones'" 
+                        class="buttonTableAction"><i class="pi pi-check"></i></button>
+                        <span *ngIf="col.field !== 'acciones'"> {{rowData[col.field]}} </span>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5"><strong>{{ 'administration.addAdministrator.empty' | translate }}</strong></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<!-- VENTANA MODAL DE CONFIRMACIÓN ACEPTAR PETICIÓN-->
+<p-dialog header="{{ 'administration.addAdministrator.confirmationTitle' | translate }}" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p>{{ 'administration.addAdministrator.confirmation' | translate }}</p>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple icon="pi pi-check" (click)="convert()" label="{{ 'administration.addAdministrator.yes' | translate }}" class="p-button-danger"></button>
+        <button pButton pRipple icon="pi pi-times" (click)="displayModal=false" label="{{ 'administration.addAdministrator.no' | translate }}" class="p-button-secondary"></button>
+    </ng-template>
+</p-dialog>

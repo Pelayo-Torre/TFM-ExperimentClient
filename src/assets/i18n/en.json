@@ -1,0 +1,457 @@
+{
+    "menu":{
+        "experiments" : {
+            "title" : "Experiments",
+            "create": "Create new",
+            "list": "List"
+        },
+        "investigators" : "Investigators",
+        "petitions": {
+            "title": "Petitions",
+            "received" : "Received",
+            "sent": "Sent"
+        },
+        "administration" : {
+            "title" : "Administration",
+            "requests" : "Requests",
+            "newAdministrator" : "New Administrator"
+        },
+        "languaje": {
+            "title": "Languaje",
+            "spanish": "Spanish",
+            "english": "English"
+        },
+        "out" : "Sign off",
+        "login" : "Login",
+        "register": "Sign Up",
+        "profile": {
+            "title" : "Profile",
+            "firstParragraph" : "Your personal data is shown below in the application:",
+            "name" : "Name:",
+            "surname" : "Surname",
+            "username" : "Username:",
+            "mail": "Mail",
+            "dataRegister" : "Registration date",
+            "rol" : "Role",
+            "evaluation": "Trial period",
+            "validated": "Validated",
+            "administrator": "Administrator",
+            "edit" : "Update",
+            "cancel": "Cancel",
+            "important": "Important: ",
+            "mailAlreadyExist" : "The specified mail already exists in the system",
+            "usernameAlreadyExist" : "The specified username already exists on the system",
+            "withRequest1": "The expiration date of your trial period is the day",
+            "withRequest2": "Press",
+            "withRequest3": "here",
+            "withRequest4": "to request account approval.",
+            "withOutRequest" : "Your request is pending approval by the system administration",
+            "updateOk": "Your data has been updated correctly",
+            "updateNok": "An error occurred while updating your data. Please try again."
+        },
+        "request" : {
+            "sendOk" : "The request has been successfully registered.",
+            "sendKo" : "An error has occurred in the registry. Please, try again"
+        }
+    },
+    "login" : {
+        "title" : "Login",
+        "mail" : "Mail",
+        "password" : "Password",
+        "login" : "Login",
+        "validations" : {
+            "mail": "Mail is required",
+            "password" : "Password is required",
+            "wrongCredentials" : "Wrong credentials entered"
+        },
+        "loginErr" : "An error has occurred. Please try again."
+    },
+    "investigator" : {
+        "register" : {
+            "title" : "Create an account",
+            "firstname": "Nombre",
+            "surnames" : "Surnames",
+            "username": "Username",
+            "mail": "Mail",
+            "password": "Password",
+            "repeatPassword": "Repeat password",
+            "register": "Register",
+            "validations": {
+                "name": "The name is required",
+                "surname": "Last names are required",
+                "username": "Username is required",
+                "usernameAlreadyExist" : "The username entered is already registered",
+                "mail": "Mail is required",
+                "mailAlreadyExist": "The mail entered is already registered",
+                "mailFormat": "The mail format is wrong",
+                "password": "Password is required",
+                "samesPasswords": "The passwords must be the same",
+                "passwordLength": "Password must be at least 8 characters long"
+            },
+            "usernameErr": "Username verification failed. Please, try again",
+            "mailErr": "Mail verification failed. Please, try again",
+            "registerErr": "An error has occurred in the registry. Please, try again",
+            "registerSuccess": "Registration was successful."
+        }
+    },
+    "experiment" : {
+        "register" : {
+            "title" : "Create an experiment",
+            "titleExperiment" : "Title",
+            "description" : "Description",
+            "newData" : "Add demographic data",
+            "value" : "Value",
+            "type" : "Type",
+            "delete" : "Delete",
+            "STRING" : "Text",
+            "DATE" : "Date",
+            "NUMBER" : "Number",
+            "register" : "Register",
+            "validations" : {
+                "title": "Title is required",
+                "description": "Description is required",
+                "valueErr": "Value is required"
+            },
+            "registerErr": "An error has occurred in the registry. Please, try again",
+            "registerSuccess": "The experiment has been created successfully"
+        },
+        "list": {
+            "title" : "Experiment list",
+            "header.titleExperiment" : "Title",
+            "header.description" : "Description",
+            "header.creationDate" : "Creation date",
+            "header.state" : "State",
+            "header.actions" : "Actions",
+            "inputTitle" : "Write a title",
+            "inputDescription" : "Write a description",
+            "inputDate" : "Write a date",
+            "inputState" : "Select a state",
+            "newExperiment" : "New Experiment",
+            "states" : {
+                "open" : "OPEN",
+                "closed": "CLOSED",
+                "created": "CREATED",
+                "OPEN" : "OPEN",
+                "CLOSED": "CLOSED",
+                "CREATED": "CREATED"
+            },
+            "empty" : "No experiments found",
+            "edit": "Edit"
+        },
+        "binnacle" : {
+            "title" : "Binnacle",
+            "newNote" : "New note",
+            "update" : "Update",
+            "delete" : "Delete",
+            "empty": "No notes found",
+            "registerNote" : {
+                "title" :"Create a note",
+                "titleNote": "Title",
+                "descriptionNote" : "Description",
+                "register" : "Register",
+                "validations": {
+                    "title": "Title is required",
+                    "description": "Description is required"
+                },
+                "registerErr": "Error registering note. Please try again",
+                "registerSuccess": "The note has been created successfully"
+            },
+            "updateNote" : {
+                "title" :"Update data",
+                "titleNote": "Title",
+                "descriptionNote" : "Description",
+                "update" : "Update",
+                "validations": {
+                    "title": "Title is required",
+                    "description": "Description is required"
+                },
+                "updateErr": "Error updating note. Please try again",
+                "updateSuccess": "The note has been updated successfully"
+            },
+            "deleteNote": {
+                "title": "Confirmation",
+                "description" : "Do you want to delete the selected note?",
+                "yes": "Yes",
+                "no": "No",
+                "deleteErr": "Error deleting note. Please try again",
+                "deleteSuccess": "The note has been deleted successfully"
+            }
+        },
+        "edit" : {
+            "title" : "Title",
+            "description" : "Description",
+            "newData" : "Add demographic data",
+            "value" : "Value",
+            "type" : "Type",
+            "delete" : "Delete",
+            "STRING" : "Text",
+            "DATE" : "Date",
+            "NUMBER" : "Number",
+            "register" : "Register",
+            "validations" : {
+                "title": "Title is required",
+                "description": "Description is required",
+                "valueErr": "Value is required"
+            },
+            "edit" : "Data editing",
+            "data" : "Calculate data",
+            "status" : "Status",
+            "creator" : "Creator",
+            "creationDate" : "Creation date",
+            "script": "Data collection file",
+            "download": "Download",
+            "update" : "Update",
+            "accept" : "Accept",
+            "cancel" : "Cancel",
+            "updateErr": "Error updating experiment. Please try again",
+            "updateSuccess": "The experiment has been updated successfully",
+            "loadDataErr": "Error loading experiment data. Please try again",
+            "confirmationChangeState" : "Confirmation",
+            "paragraphChangeState" : "Do you want to change the state of the experiment? You will not be able to make changes to its data."
+        },
+        "detail" : "Experiment detail",
+        "open": "The experiment has been opened successfully",
+        "close" :"The experiment has been closed successfully",
+        "reopen" : "The experiment has been reopened successfully",
+        "delete": "The experiment has been deleted successfully",
+        "openErr": "Error opening experiment. Please, try again",
+        "closeErr": "Error closing experiment. Please, try again",
+        "reopenErr": "Error reopening experiment. Please, try again",
+        "deleteErr": "Error deleting experiment. Please, try again",
+        "downloadErr": "Error downloading script. Please, try again",
+        "OPEN": "OPEN",
+        "CLOSE": "CLOSE",
+        "REOPEN": "RE-OPEN",
+        "DELETE": "DELETE",
+        "actions" : "Actions",
+        "investigatorsAssociated": {
+            "name": "Name",
+            "mail": "Mail",
+            "username": "User",
+            "rol" : "Role",
+            "gestor": "Manager",
+            "title" : "Associate investigators",
+            "newAssociation" : "New association",
+            "associationSuccess" : "The association has been successfully registered",
+            "associationErr" : "Error registering association. Please try again",
+            "filterName": "Write a name",
+            "filterMail": "Write a mail",
+            "filterUsername": "Write a username",
+            "confirmAssociation": "Confirm association",
+            "selectGestor": "Indicate if the researcher will be a manager by checking the following box:",
+            "register": "Register",
+            "cancel": "Cancel",
+            "notInvestigators": "No investigators found",
+            "cancelAssociation" : "",
+            "confirmCancelAssociation" : "Do you want to cancel the researcher's association in the experiment?",
+            "cancelAssociationTitle" : "Cancelar asociación",
+            "newAssociationTitle" : "New association",
+            "cancelAssociationYes": "Yes",
+            "cancelAssociationNo": "No",
+            "cancelAssociationOk": "The association has been successfully canceled",
+            "cancelAssociationKo": "Failed to cancel association. Please, try again."
+        },
+        "newPetition" : {
+            "title" : "Invite an investigator",
+            "parragraph" : "Enter the mail address of the investigator to collaborate on the experiment.",
+            "mail" : "Mail",
+            "manager" : "Manager",
+            "validations" : {
+                "mail" : "Mail is required",
+                "mailFormat": "The mail format is wrong",
+                "mailAlreadyExist" : "An invitation has already been sent to the specified email"
+            },
+            "register" : "Register"
+        },
+        "data" : {
+            "selection" : {
+                "title" : "Data selection:",
+                "introduction" : "Select the data you want to view:",
+                "calculate": "Calculate",
+                "users": "Users:",
+                "filters": "Filters",
+                "data": "Data to be calculated:",
+                "scenes": "Scenes:",
+                "calculating": "Calculating data...",
+                "selectAll": "Select all"
+            },
+            "caption": "Caption:",
+            "strategys" : {
+                "1": "Total scene time",
+                "2": "Scene reaction time",
+                "3": "Reaction time in a selection component",
+                "4": "Number of options offered in a selection component",
+                "5": "Reaction time / Number of options",
+                "6": "Number of times the user changed their mind on a selection component",
+                "7": "Number of characters per second",
+                "8": "Number of words per second",
+                "9": "Number of characters removed",
+                "11": "Number of times the left and right scroll arrows have been pressed",
+                "13": "Ideal distance between the mouse position and the clicked component",
+                "14": "Actual distance between mouse position and clicked component",
+                "15": "Difference between real and ideal distance",
+                "16": "Mouse movement time",
+                "17": "Mouse speed over actual distance",
+                "18": "Mouse speed over ideal distance",
+                "19": "Mouse fixes",
+                "20": "Mouse precision in pixels",
+                "21": "Mouse precision in %",
+                "22": "Number of clicks not produced on components",
+                "23": "Path deviation: 1 (above), -1 (below), 0 (no deviation)"
+            },
+            "abbreviations": {
+                "1": "T. scene time (ms)",
+                "2": "Scene R.T (ms)",
+                "3": "Selection R.T (ms)",
+                "4": "Nº Options offered",
+                "5": "R.T / Nº options",
+                "6": "Nº change opinion",
+                "7": "Nº characters/second",
+                "8": "Nº words/second",
+                "9": "Nº characters removed",
+                "11": "Nº times left and right arrows",
+                "13": "Ideal D. mouse position and comp",
+                "14": "Real D. mouse position and comp",
+                "15": "Difference real e ideal D.",
+                "16": "Mouse movement T. (ms)",
+                "17": "S. mouse/real D.",
+                "18": "S. mouse/ideal D.",
+                "19": "Mouse corrections",
+                "20": "pixel precision",
+                "21": "pixel % precision",
+                "22": "Nº error cliks",
+                "23": "Deviation"
+            },
+            "filters" : {
+                "1": "Full Scene",
+                "4": "Full DemographicData"
+            },
+            "title": "Experiment data",
+            "button": "New calculation",
+            "introduction" : "Calculated data for the scene:",
+            "abbreviation": "Abbreviation",
+            "description": "Description",
+            "export": "Export data",
+            "calculateErr": "Error calculating data. Please, try again",
+            "usersErr": "Error getting users. Please, try again",
+            "scenesErr": "Error getting scenes. Please, try again",
+            "strategysErr": "Error getting strategys. Please, try again",
+            "filtersErr": "Error getting filters. Please, try again",
+            "demographicDataErr": "Error getting demographicData. Please, try again" ,
+            "exportErr": "Error exporting data. Please, try again",
+            "trace" : {
+                "title" : "Traced"
+            }     
+        }
+    },
+    "petition": {
+        "sent": {
+            "title": "Petitions sent",
+            "mail": "Investigator",
+            "titleExperiment": "Title",
+            "descriptionExperiment": "Description",
+            "shippingDate": "Date",
+            "statePetition": "State",
+            "rol": "Role",
+            "actions": "",
+            "inputMail": "Write a mail",
+            "inputTitle" : "Write a title",
+            "inputDescription" : "Write a description",
+            "inputDate" : "Write a date",
+            "inputState" : "Select a state",
+            "manager": "Manager",
+            "states" : {
+                "CANCELLED": "CANCELLED",
+                "PENDING" : "PENDING",
+                "ACCEPTED": "ACCEPTED",
+                "REJECTED": "REJECTED"
+            },
+            "empty" : "No petitions found",
+            "confirmation": "Confirmation",
+            "cancelPetition": "Do you want to cancel the petition?",
+            "yes": "Yes",
+            "no": "No",
+            "cancelSuccess": "Petition has been cancelled successfully",
+            "cancelErr": "Error cancelling petition. Please try again",
+            "cancelButton": "Cancel"
+        },
+        "received": {
+            "title": "Petitions received",
+            "acceptSuccess": "Petition has been accepted successfully",
+            "acceptErr": "Error accepting petition. Please try again",
+            "rejectSuccess": "Petition has been rejected successfully",
+            "rejectErr": "Error rejecting petition. Please try again",
+            "acceptPetition": "Do you want to accept the petition?",
+            "rejectPetition" : "Do you want to reject the petition?",
+            "acceptButton": "Accept",
+            "rejectButton": "Reject"
+        }
+    },
+    "administration" : {
+        "requests" : {
+            "title" : "Request list",
+            "header" : {
+                "name" : "Name",
+                "surname" : "Surname",
+                "username" : "Username",
+                "mail" : "Mail",
+                "acciones" : ""
+            },
+            "filters" : {
+                "name": "Write a name",
+                "surname" : "Write the surnames",
+                "username" : "Write a username",
+                "mail" : "Write a mail"
+            },
+            "accept" : "Accept",
+            "reject" : "Reject",
+            "acceptOk" : "The request has been accepted correctly.",
+            "acceptKo" : "An error occurred while accepting the request. Please try again.",
+            "rejectOk" : "The request has been successfully rejected.",
+            "rejectKo" : "An error occurred while rejecting the request. Please try again.",
+            "empty" : "No requests found.",
+            "confirmationTitle" : "Confirmation",
+            "confirmation": "Do you want to accept the account approval request?",
+            "cancelRequest": "Do you want to cancel the account approval request?",
+            "yes": "Yes",
+            "no": "No"
+        },
+        "addAdministrator" : {
+            "title" : "New administrator",
+            "header" : {
+                "name" : "Name",
+                "surname" : "Surname",
+                "username" : "Username",
+                "mail" : "Mail",
+                "acciones" : ""
+            },
+            "filters" : {
+                "name": "Write a name",
+                "surname" : "Write the surnames",
+                "username" : "Write a username",
+                "mail" : "Write a mail"
+            },
+            "accept" : "Accept",
+            "acceptOk" : "The investigator has been successfully registered as an administrator.",
+            "acceptKo" : "An error occurred while registering the investigator as an administrator. Please try again.",
+            "empty" : "No investigators found.",
+            "confirmationTitle" : "Confirmation",
+            "confirmation": "Do you want to convert the investigator to an administrator?",
+            "yes": "Yes",
+            "no": "No"
+        }
+    },
+    "errors" : {
+        "403" : "Permissions error. You do not have permission to access the requested resource."
+    },
+    "breadcrumbs": {
+        "home": "Home",
+        "newExperiment": "New experiment",
+        "detail": "Experiment detail",
+        "selectionData": "Data selection",
+        "calculateData": "Experiment data",
+        "petitionReceived": "Petitions received",
+        "petitionSent": "Petitions sent"
+    },
+    "return": "Return"
+}

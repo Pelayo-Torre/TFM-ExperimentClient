@@ -1,0 +1,44 @@
+#divInvestigators{
+    overflow-x:auto;
+}
+
+#headerInvestigators{
+    width: 100%;
+}
+
+#titleInvestigators{
+    display: inline-block;
+    text-align: left;
+    width: 60%;
+}
+
+#addAssociation{
+    display: inline-block;
+    text-align: right;
+    width: 40%;
+}
+
+#boxButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#totalInvestigators{
+    text-align: right;
+}
+
+@media screen and (max-width:500px){
+    #titleInvestigators{
+        display: inline;
+        width: 100%;
+        text-align: left;
+    }
+    
+    #addAssociation{
+        display: inline;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+}

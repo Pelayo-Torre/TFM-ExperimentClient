@@ -1,0 +1,40 @@
+#divPrin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+}
+
+#boxForm{
+    width: 540px;
+}
+
+#boxInputs{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+#boxButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#formButton{
+    margin-bottom: 4%;
+}
+
+#imgDiv {
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    height : 140px;
+}
+
+#alerts{
+    margin-left: 3%;
+    margin-right: 3%;
+}

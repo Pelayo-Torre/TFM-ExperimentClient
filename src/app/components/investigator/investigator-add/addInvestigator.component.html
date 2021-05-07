@@ -1,0 +1,67 @@
+
+<div id="alerts">
+    <p-messages  [(value)]="msgs" [enableService]="false"></p-messages>
+</div>
+
+
+<form [formGroup]="registerInvestigator" (ngSubmit)="register()">
+    <div id="divPrin">
+        <div class="p-shadow-7" id="boxForm" >
+            <div class="p-fluid" id="boxInputs">
+                <div id="title" >
+                    <h3>{{ 'investigator.register.title' | translate }}</h3>
+                </div>
+                <div class="p-field">
+                    <label for="firstname1"><strong>{{ 'investigator.register.firstname' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                        <input id="firstname1" type="text" maxlength=20 formControlName="name" pInputText>
+                    </div>
+                    <span class="spanErr" *ngIf="registerInvestigator.get('name').touched && registerInvestigator.get('name').hasError('required')">{{ 'investigator.register.validations.name' | translate }}</span>
+                </div>
+                <div class="p-field">
+                    <label for="lastname1"><strong>{{ 'investigator.register.surnames' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                        <input id="lastname1" type="text" maxlength=30 formControlName="surname" pInputText>
+                    </div>
+                    <span class="spanErr" *ngIf="registerInvestigator.get('surname').touched && registerInvestigator.get('surname').hasError('required')">{{ 'investigator.register.validations.surname' | translate }}</span>
+                </div>
+                <div class="p-field">
+                    <label for="mail1"><strong>{{ 'investigator.register.mail' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+                        <input id="mail1" type="text" maxlength=25  formControlName="mail" pInputText> 
+                    </div>
+                    <span class="spanErr" *ngIf="registerInvestigator.get('mail').touched && registerInvestigator.get('mail').hasError('required')">{{ 'investigator.register.validations.mail' | translate }}</span>
+                    <span class="spanErr" *ngIf="registerInvestigator.get('mail').touched && registerInvestigator.get('mail').hasError('pattern')">{{ 'investigator.register.validations.mailFormat' | translate }}</span>
+                    <span class="spanErr" *ngIf="mailAlreadyExist === true">{{ 'investigator.register.validations.mailAlreadyExist' | translate }}</span>
+                </div>    
+                <div class="p-field">
+                    <label for="password1"><strong>{{ 'investigator.register.password' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                        <input id="password1" type="password" maxlength=50 formControlName="password" pPassword />
+                    </div>
+                    <span class="spanErr" *ngIf="registerInvestigator.get('password').touched && registerInvestigator.get('password').hasError('required')">{{ 'investigator.register.validations.password' | translate }}</span>
+                    <span class="spanErr" *ngIf="registerInvestigator.get('password').touched && registerInvestigator.get('password').hasError('minlength')">{{ 'investigator.register.validations.passwordLength' | translate }}</span>
+                </div>
+                <div class="p-field">
+                    <label for="password2"><strong>{{ 'investigator.register.repeatPassword' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                        <input id="password2" type="password" maxlength=50 formControlName="repeatPassword" pPassword />
+                    </div>
+                    <span class="spanErr" *ngIf="registerInvestigator.get('repeatPassword').touched && registerInvestigator.get('repeatPassword').hasError('required')">{{ 'investigator.register.validations.password' | translate }}</span>
+                    <span class="spanErr" *ngIf="passwordsIncorrects === true">{{ 'investigator.register.validations.samesPasswords' | translate }}</span>
+                    <span class="spanErr" *ngIf="registerInvestigator.get('repeatPassword').touched && registerInvestigator.get('repeatPassword').hasError('minlength')">{{ 'investigator.register.validations.passwordLength' | translate }}</span>
+                </div>
+            </div>
+            <div id="boxButton">
+                <p-button label="{{ 'investigator.register.register' | translate }}" id="formButton" type="submit"  [disabled]=registerInvestigator.invalid></p-button>
+            </div>
+        </div>
+    </div>
+</form>
+
+

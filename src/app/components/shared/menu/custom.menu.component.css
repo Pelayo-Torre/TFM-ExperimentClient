@@ -1,0 +1,42 @@
+nav{
+    background-color: #1d69a0;
+}
+
+ a{
+    font-size: 1.1rem;
+    color: white;
+}
+
+li{
+    margin-right: 6px;
+}
+
+i{
+    font-size: 1rem;
+    color: white;
+}
+
+#colapse{
+    font-size: 2rem;
+}
+
+#subMenu1, #subMenu2, #subMenu3, #subMenu4, #subMenu5, #subMenu6{
+    color: black;
+}
+
+#spanishFlag, #englandFlag{
+    margin-right: 10px;
+}
+
+#profile, #sendRequest{
+    cursor: pointer;
+}
+
+#sendRequest:hover{
+    text-decoration: underline;
+}
+
+#editButton{
+    margin-right: 10px;
+}
+

@@ -1,0 +1,69 @@
+<div>
+    <ul class="breadcrumb">
+        <li><a  routerLink="/experiments">{{ 'breadcrumbs.home' | translate }}</a></li>
+        <li>{{ 'breadcrumbs.newExperiment' | translate }}</li>
+    </ul>
+</div>
+<div id="alerts">
+    <p-messages [(value)]="msgs" [enableService]="false" ></p-messages>
+</div>
+<div id="divPrin">
+    <form [formGroup]="registerExperiment" (ngSubmit)="register()">
+        <div id="boxForm" >
+            <div id="boxInputs">
+                <div id="title" > 
+                    <h3>{{ 'experiment.register.title' | translate }}</h3>
+                </div>
+                <div class="p-field">
+                    <label for="title"><strong>{{ 'experiment.register.titleExperiment' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <input id="title" type="text" maxlength=120 formControlName="title" pInputText>
+                    </div>
+                    <span class="spanErr" *ngIf="registerExperiment.get('title').touched && registerExperiment.get('title').hasError('required')">{{ 'experiment.register.validations.title' | translate }}</span>
+                </div>
+                <div class="p-field">
+                    <label for="description"><strong>{{ 'experiment.register.description' | translate }}</strong></label>
+                    <div class="p-inputgroup">
+                        <textarea id="description" rows="3" cols="30" pInputTextarea formControlName="description" autoResize="autoResize" maxlength=450></textarea>
+                    </div>
+                    <span class="spanErr" *ngIf="registerExperiment.get('description').touched && registerExperiment.get('description').hasError('required')">{{ 'experiment.register.validations.description' | translate }}</span>
+                </div>
+    
+                <button pButton class="p-button-text p-button-sm" type="button" id="addDemographicData" label="{{ 'experiment.register.newData' | translate }}" (click)="addDemographicData(null, null)" icon="pi pi-plus"></button>
+                
+                <div class="containerAll" >
+                    <div class="containerDD" formArrayName="demographicData" *ngFor="let data of registerExperiment.get('demographicData')['controls']; let i = index">
+                        <div [formGroupName]="i" >
+                            <div class="demographicData">
+                                <div class="value">
+                                    <label><strong>{{ 'experiment.register.value' | translate }}</strong></label>
+                                    <input class="inputFilter" type="text" maxlength=40 formControlName="name" pInputText>
+                                </div>
+                                <div class="type">
+                                    <label for="type{{i}}"><strong>{{ 'experiment.register.type' | translate }}</strong></label>
+                                    <p-dropdown formControlName="type" id="type{{i}}" autoWidth="false" [style]="{'width':'100%'}"  [options]="dataTypes" >
+                                        <ng-template let-option pTemplate="item">
+                                            <span>{{ 'experiment.register.' + option.value | translate }}</span>
+                                        </ng-template>
+                                    </p-dropdown>
+                                </div>
+                                <div class="delete">
+                                    <button type="button" (click)="deleteDemographicData(i)" title="{{ 'experiment.register.delete' | translate }}"
+                                        class="buttonTableAction"><i class="pi pi-times"></i></button>
+                                </div>
+                            </div>
+                            <span class="spanErr" *ngIf="registerExperiment.get('demographicData')['controls'][i].get('name').touched && registerExperiment.get('demographicData')['controls'][i].get('name').hasError('required')">{{ 'experiment.register.validations.valueErr' | translate }}</span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div id="boxButton">
+                <p-button label="{{ 'experiment.register.register' | translate }}" id="formButton" type="submit"  [disabled]=registerExperiment.invalid></p-button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+

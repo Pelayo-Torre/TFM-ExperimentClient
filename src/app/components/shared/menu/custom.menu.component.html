@@ -1,0 +1,151 @@
+
+<nav class="navbar navbar-expand-lg  " >
+    <a *ngIf="!userInSession" class="navbar-brand" href="#">
+        <img src="../../../../assets/img/icon.png" width="45" height="45" class="d-inline-block align-top" alt="Icono aplicación">
+    </a>
+    <a *ngIf="userInSession" class="navbar-brand" href="/experiments">
+      <img src="../../../../assets/img/icon.png" width="45" height="45" class="d-inline-block align-top" alt="Icono aplicación">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="pi pi-bars" id="colapse" > </i></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto" >
+        <li *ngIf="userInSession === true" class="nav-item dropdown">
+            <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkE" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ 'menu.experiments.title' | translate }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="experiments/register"id="subMenu1">{{ 'menu.experiments.create' | translate }}</a>
+              <a class="dropdown-item" routerLink="experiments"  id="subMenu2">{{ 'menu.experiments.list' | translate }}</a>
+            </div>
+        </li>
+        <li *ngIf="userInSession === true" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkP" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ 'menu.petitions.title' | translate }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="petitions/received" id="subMenu3">{{ 'menu.petitions.received' | translate }}</a>
+              <a class="dropdown-item" routerLink="petitions/sent" id="subMenu4">{{ 'menu.petitions.sent' | translate }}</a>
+            </div>
+        </li>
+        <li *ngIf="userInSession === true && investigator.role === 'ADMINISTRATOR'" class="nav-item dropdown">
+          <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkE" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ 'menu.administration.title' | translate }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="administration/requests"id="subMenu5">{{ 'menu.administration.requests' | translate }}</a>
+            <a class="dropdown-item" routerLink="administration/register/administrator"  id="subMenu6">{{ 'menu.administration.newAdministrator' | translate }}</a>
+          </div>
+      </li>
+      </ul>
+      <span class="navbar-text">
+        <ul class="navbar-nav mr-auto">
+          <li *ngIf="userInSession === true" class="nav-item">
+            <a class="nav-link" (click)="showModalProfile()" id="profile"><i class="pi pi-user" > </i> {{ 'menu.profile.title' | translate }}</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkP" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="pi pi-globe" > </i> {{ 'menu.languaje.title' | translate }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" id="subMenu5" (click)="changeLanguaje('es')">
+                <img src="/assets/img/spanish.png" id="spanishFlag" /> {{ 'menu.languaje.spanish' | translate }}
+              </a>
+              <a class="dropdown-item" id="subMenu6" (click)="changeLanguaje('en')">
+                <img src="/assets/img/england.png" id="englandFlag" /> {{ 'menu.languaje.english' | translate }}
+              </a>
+            </div>
+          </li>
+          <li *ngIf="userInSession === false" class="nav-item">
+            <a class="nav-link" routerLink="/login"><i class="pi pi-user" > </i> {{ 'menu.login' | translate }}</a>
+          </li>
+          <li *ngIf="userInSession === false" class="nav-item">
+              <a class="nav-link" routerLink="investigator/register"><i class="pi pi-user" > </i> {{ 'menu.register' | translate }}</a>
+          </li>
+          <li *ngIf="userInSession === true" class="nav-item">
+              <a class="nav-link" (click)="logout()" routerLink="/login"><i class="pi pi-power-off" > </i> {{ 'menu.out' | translate }}</a>
+          </li>
+        </ul>
+      </span>
+    </div>
+  </nav>
+
+  <p-toast position="top-right"></p-toast>
+
+
+<!-- Ventana modal de datos personales -->
+<p-dialog header="{{ 'menu.profile.title' | translate }}" [(visible)]="displayModalProfile" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+[draggable]="false" [resizable]="false" *ngIf="userInSession == true">
+  <p>{{ 'menu.profile.firstParragraph' | translate }} </p>
+  <form [formGroup]="updateInvestigator" (ngSubmit)="update()">
+      <div id="boxForm" >
+          <div class="p-fluid" id="boxInputs">
+              <div *ngIf="updating" class="p-field">
+                  <label for="firstname1"><strong>{{ 'menu.profile.name' | translate }}</strong></label>
+                  <div class="p-inputgroup">
+                      <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                      <input  id="firstname1" type="text" maxlength=20 formControlName="name" pInputText>
+                    </div>
+                  <span class="spanErr" *ngIf="updateInvestigator.get('name').touched && updateInvestigator.get('name').hasError('required')">{{ 'investigator.register.validations.name' | translate }}</span>
+              </div>
+              <div *ngIf="!updating">
+                  <label for="nameInvestigator"><strong>{{ 'menu.profile.name' | translate }}  </strong>
+                    <span>{{investigator.name}}</span>
+                  </label><br>
+              </div>
+              <div class="p-field" *ngIf="updating">
+                  <label for="lastname1"><strong>{{ 'menu.profile.surname' | translate }}</strong></label>
+                  <div class="p-inputgroup">
+                      <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                      <input id="lastname1" type="text" maxlength=30 formControlName="surname" pInputText>
+                    </div>
+                  <span class="spanErr" *ngIf="updateInvestigator.get('surname').touched && updateInvestigator.get('surname').hasError('required')">{{ 'investigator.register.validations.surname' | translate }}</span>
+              </div>
+              <div *ngIf="!updating">
+                <label><strong>{{ 'menu.profile.surname' | translate }}  </strong>
+                  <span>{{investigator.surname}}</span>
+                </label><br>
+              </div> 
+              <div class="p-field" *ngIf="updating">
+                  <label for="mail1"><strong>{{ 'menu.profile.mail' | translate }}</strong></label>
+                  <div class="p-inputgroup">
+                      <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+                      <input id="mail1" type="text" maxlength=25  formControlName="mail" pInputText> 
+                  </div>
+                  <span class="spanErr" *ngIf="updateInvestigator.get('mail').touched && updateInvestigator.get('mail').hasError('required')">{{ 'investigator.register.validations.mail' | translate }}</span>
+                  <span class="spanErr" *ngIf="updateInvestigator.get('mail').touched && updateInvestigator.get('mail').hasError('pattern')">{{ 'investigator.register.validations.mailFormat' | translate }}</span>
+                  <span class="spanErr" *ngIf="mailAlreadyExist == true">{{ 'menu.profile.mailAlreadyExist' | translate }}</span>
+              </div>  
+              <div *ngIf="!updating">
+                <label for="nameInvestigator"><strong>{{ 'menu.profile.mail' | translate }}  </strong>
+                  <span>{{investigator.mail}}</span>
+                </label><br>
+              </div>  
+              <div>
+                <label><strong>{{ 'menu.profile.dataRegister' | translate }}  </strong>
+                  <span>{{ investigator.registrationDate | date: 'dd/MM/yyyy'}}</span>
+                </label><br>
+              </div>  
+              <div>
+                <label for="nameInvestigator"><strong>{{ 'menu.profile.rol' | translate }}  </strong>
+                  <span *ngIf="investigator.role === 'INVESTIGATOR_EVALUATION'">{{ 'menu.profile.evaluation' | translate }}</span>
+                  <span *ngIf="investigator.role === 'INVESTIGATOR_VALIDATED'">{{ 'menu.profile.validated' | translate }}</span>
+                  <span *ngIf="investigator.role === 'ADMINISTRATOR'">{{ 'menu.profile.administrator' | translate }}</span>
+                </label><br>
+              </div>
+          </div>
+          <div id="boxButton">
+            <button pButton *ngIf="updating" class="p-button-sm" id="editButton" label="{{ 'menu.profile.edit' | translate }}" type="submit"  [disabled]=updateInvestigator.invalid></button>
+            <button pButton pRipple *ngIf="updating" label="{{ 'menu.profile.cancel' | translate }}" (click)="desactivateEdition()" class="p-button-secondary p-button-sm" ></button>
+            <button pButton *ngIf="!updating" class="p-button-sm" label="{{ 'menu.profile.edit' | translate }}" (click)="activateEdition()" ></button>
+        </div>
+      </div>
+  </form>
+  <div><br>
+    <p *ngIf="investigator.role === 'INVESTIGATOR_EVALUATION' && investigator.requestPending === false">
+      <strong>{{ 'menu.profile.important' | translate }}</strong> {{ 'menu.profile.withRequest1' | translate }} {{ investigator.expirationDate | date: 'dd/MM/yyyy'}}. {{ 'menu.profile.withRequest2' | translate }} <a id="sendRequest" (click) = "sendRequestChangeRol()"><strong>{{ 'menu.profile.withRequest3' | translate }}</strong></a> {{ 'menu.profile.withRequest4' | translate }}</p>
+    <p *ngIf="investigator.role === 'INVESTIGATOR_EVALUATION' && investigator.requestPending === true">
+      <strong>{{ 'menu.profile.important' | translate }}</strong> {{ 'menu.profile.withOutRequest' | translate }}</p>
+    </div>
+</p-dialog>

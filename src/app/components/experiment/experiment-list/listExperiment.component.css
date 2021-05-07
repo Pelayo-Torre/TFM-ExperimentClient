@@ -1,0 +1,68 @@
+ 
+#divPrin{
+    margin-right: 3%;
+    margin-left: 3%;
+    margin-top: 1%;
+    margin-bottom: 50px;
+}
+
+
+/* CABECERA */
+#header{
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+#search, #title{
+    display: inline-block;
+}
+
+#title{
+    text-align: left;
+    width: 50%;
+}
+
+#search{
+    text-align: right;
+    width: 50%
+}
+
+/* INPUTS */
+.inputFilter{
+    width: 100%;
+}
+
+/* TABLA */
+#contentTable{
+    overflow-x:auto;
+}
+
+#table{
+    border-collapse: collapse;
+}
+
+/*
+.headerTitlesTable{
+    font-size: 1.2em;
+} */
+
+#CREATED, #OPEN, #CLOSED{
+    padding: 3px 7px;
+    font-size: 0.9em;
+}
+
+#CREATED{
+    background: #feedaf;
+    color: #8a5340;
+    
+}
+
+#OPEN{
+    background-color: #c8e6c9;
+    color: #256029;
+}
+
+#CLOSED{
+    background-color: #ffcdd2;
+    color: #c63737;
+}

@@ -1,0 +1,70 @@
+
+h1, h2, h3, h4, h5, h6, label{
+    font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.spanErr{
+    color: red;
+}
+
+#alerts{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+/* ESTILOS DE LAS TABLAS */
+
+.table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.headerTable{
+    background-color: #4FC3A1 !important;
+    color: white !important;
+    text-align: center !important;
+}
+
+/* BOTONES DE LAS TABLAS */
+
+.buttonTableAction{
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    text-align: center;
+}
+
+.buttonTableAction:hover{
+    background-color: #D9E0DD;
+}
+
+/* INPUTS */
+.inputFilter{
+    width: 100%;
+}
+
+/* BREADCRUMBS */
+ul.breadcrumb {
+    padding: 4px 8px;
+    list-style: none;
+    background-color: #eee;
+  }
+  ul.breadcrumb li {
+    display: inline;
+    font-size: 14px;
+  }
+  ul.breadcrumb li+li:before {
+    padding: 4px;
+    color: black;
+    content: "/\00a0";
+  }
+  ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+  }
+  ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+  }
