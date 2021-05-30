@@ -19,6 +19,7 @@
                             <p-header class="headerPanel">
                                 <div class="title">
                                     <span class="ui-panel-title"><strong> {{rowData['title']}}</strong></span>
+                                    <br><span>{{rowData['creationDate'] | date: 'dd/MM/yyyy HH:mm'}} - {{rowData['author']}}</span>
                                 </div>
                                 <div class="actions">
                                     <button pButton type="button" label="{{ 'experiment.binnacle.update' | translate  }}" class="p-button-text p-button-plain" icon="pi pi-pencil" (click)="showModalEditNote(rowData)"></button>

@@ -41,21 +41,21 @@
       </ul>
       <span class="navbar-text">
         <ul class="navbar-nav mr-auto">
-          <li *ngIf="userInSession === true" class="nav-item">
-            <a class="nav-link" (click)="showModalProfile()" id="profile"><i class="pi pi-user" > </i> {{ 'menu.profile.title' | translate }}</a>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkP" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="pi pi-globe" > </i> {{ 'menu.languaje.title' | translate }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" id="subMenu5" (click)="changeLanguaje('es')">
-                <img src="/assets/img/spanish.png" id="spanishFlag" /> {{ 'menu.languaje.spanish' | translate }}
+                ES {{ 'menu.languaje.spanish' | translate }}
               </a>
               <a class="dropdown-item" id="subMenu6" (click)="changeLanguaje('en')">
-                <img src="/assets/img/england.png" id="englandFlag" /> {{ 'menu.languaje.english' | translate }}
+                EN {{ 'menu.languaje.english' | translate }}
               </a>
             </div>
+          </li>
+          <li *ngIf="userInSession === true" class="nav-item">
+            <a class="nav-link" (click)="showModalProfile()" id="profile"><i class="pi pi-user" > </i> {{ 'menu.profile.title' | translate }}</a>
           </li>
           <li *ngIf="userInSession === false" class="nav-item">
             <a class="nav-link" routerLink="/login"><i class="pi pi-user" > </i> {{ 'menu.login' | translate }}</a>

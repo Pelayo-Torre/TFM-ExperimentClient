@@ -33,6 +33,10 @@
                     <div *ngIf="isLoginFailed">
                         <span class="spanErr">{{ 'login.validations.wrongCredentials' | translate }}</span>
                     </div>
+                    <div *ngIf="isUserBlocked">
+                        <span class="spanErr">{{ 'login.validations.userBlocked' | translate }}</span>
+                    </div>
+                    <a routerLink="/investigator/register">{{ 'login.newAccount' | translate }}</a>
                     <div id="boxButton">
                         <p-button label="{{ 'login.login' | translate }}" id="formButton" type="submit"  [disabled]=loginInvestigator.invalid></p-button>
                     </div>

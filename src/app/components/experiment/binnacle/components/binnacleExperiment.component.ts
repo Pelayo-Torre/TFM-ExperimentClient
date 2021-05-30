@@ -3,7 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Message } from 'primeng/api';
 import { Note } from '../model/note'
-import { BinnacleService } from '../binnacle.service'
+import { BinnacleService } from '../binnacle.service';
+import { ExperimentService } from '../../experiment.service';
 import { Identifier } from '../../../shared/model/identifier';
 import {MessageService} from 'primeng/api';
 
@@ -54,6 +55,7 @@ export class BinnacleComponent implements OnInit{
         private translate: TranslateService,
         private fb: FormBuilder,
         private binnacleService: BinnacleService,
+        private experimentService: ExperimentService,
         private messageService: MessageService
     ){
         
@@ -72,12 +74,21 @@ export class BinnacleComponent implements OnInit{
         this.getNotes();
     }
 
+    ngDoCheck(){
+        if(this.experimentService.isStatusChanged === true){
+            this.getNotes();
+            this.experimentService.isStatusChanged = false;
+        }
+    }
+
     /**
      * Realiza una llamada al servicio para onbtener la lista de notas de la bitácora
      */
     private getNotes(){
+        
         this.binnacleService.getNotes(this.idExperiment)
             .then(notes => this.notes = notes);
+        
     }
 
     /**

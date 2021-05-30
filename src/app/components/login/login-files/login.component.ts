@@ -21,6 +21,8 @@ export class LoginComponent {
   //VARIABLES para mostrar error de autenticación al usuario
   isLoginFailed;
 
+  isUserBlocked: boolean = false;
+
    //Alertas
    msgs: Message[];
 
@@ -90,8 +92,16 @@ export class LoginComponent {
           this.authentication(); 
       },
       error => {
+        console.log(error)
         if(error.status === 401){
           this.isLoginFailed = true;
+          this.isUserBlocked = false;
+        }
+        else if(error.status === 500){
+          if(error.error['message'] === "601"){
+            this.isUserBlocked = true;
+            this.isLoginFailed = false;
+          }
         }
         else{
           this.translate.get('login.loginErr').subscribe((data:any)=> {

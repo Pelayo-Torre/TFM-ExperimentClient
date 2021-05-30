@@ -6,7 +6,6 @@ import { Note } from './model/note'
 @Injectable()
 export class BinnacleService {
 
-    //urlBase = 'https://hierbabuena.herokuapp.com/binnacle';               //--PRODUCCIÓN
     urlBase = 'http://localhost:8090/binnacle';                             //--LOCAL
 
     token;

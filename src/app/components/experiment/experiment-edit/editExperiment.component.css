@@ -14,7 +14,6 @@
     align-items: center;
 }
 
-
 #edition, #acceptEdition, #cancelEdition{
     margin-bottom: 4%;
 }
@@ -52,22 +51,33 @@
     color: #c63737;
 }
 
+#statusManager{
+    width: 100%;
+}
+
+#statusLabel{
+    display: inline-block;
+    text-align: left;
+    margin-right: 15px;
+}
+
+#statusCombo{
+    display: inline-block;
+    text-align: right;
+}
+
 /* TOOLBAR */
 #toolbar{
     width: 100%;
 }
 
-#titleToolbar{
-    display: inline-block;
-    width: 70%;
-    text-align: left;
+.containerButtons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-#buttonsToolbar{
-    display: inline-block;
-    width: 30%;
-    text-align: right;
-}
 
 /* Datos demográficos */
 
@@ -75,7 +85,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
 }
 
 .containerDD{

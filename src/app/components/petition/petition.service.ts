@@ -7,8 +7,7 @@ import { Identifier } from '../shared/model/identifier';
 @Injectable()
 export class PetitionService {
 
-    //urlBase = 'https://hierbabuena.herokuapp.com/petition';               //--PRODUCCIÓN
-    urlBase = 'http://localhost:8090/petition';                             //--LOCAL
+    urlBase = 'http://localhost:8090/petition';                             
 
     token;
 

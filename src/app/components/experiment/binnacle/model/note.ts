@@ -5,5 +5,6 @@ export class Note {
     title: string;
 	description: string;
 	creationDate: Date;
+    author: string;
 
 }

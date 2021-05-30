@@ -51,11 +51,10 @@ export class ListExperimentComponent implements OnInit{
             
 
         this.cols = [
-            { field: 'title', header: 'titleExperiment', width: '20%' },
-            { field: 'description', header: 'description', width: '40%' },
-            { field: 'formatDate', header: 'creationDate', width: '15%'},
-            { field: 'status', header: 'state', width: '15%' },
-            { field: 'acciones', header: 'actions', width: '10%' }
+            { field: 'title', header: 'titleExperiment', width: '22.5%' },
+            { field: 'description', header: 'description', width: '42.5%' },
+            { field: 'formatDate', header: 'creationDate', width: '17.5%'},
+            { field: 'status', header: 'state', width: '17.5%' },
         ]; 
 
         this.statuses = [

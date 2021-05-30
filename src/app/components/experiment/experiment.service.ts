@@ -10,8 +10,7 @@ import { Investigator } from '../investigator/model/investigator'
 @Injectable()
 export class ExperimentService {
 
-    //urlBase = 'https://hierbabuena.herokuapp.com/experiment';               //--PRODUCCIÓN
-    urlBase = 'http://localhost:8090/experiment';                             //--LOCAL
+    urlBase = 'http://localhost:8090/experiment';                             
 
     token;
 
@@ -20,6 +19,9 @@ export class ExperimentService {
 
     //Sirve para identificar si un experimento ha sido eliminado o no
     deleted: boolean = false;
+
+    //Sirve para actualizar las notas cuando exista un cambio de estado
+    isStatusChanged: boolean = false;
 
     constructor(
         private http: HttpClient

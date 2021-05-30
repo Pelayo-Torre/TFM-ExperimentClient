@@ -19,12 +19,12 @@
 
 #title{
     text-align: left;
-    width: 50%;
+    width: 75%;
 }
 
 #search{
     text-align: right;
-    width: 50%
+    width: 25%
 }
 
 /* INPUTS */
@@ -66,3 +66,21 @@
     background-color: #ffcdd2;
     color: #c63737;
 }
+
+@media only screen and (max-width: 600px) {
+
+    #search, #title{
+        display: inherit;
+    }
+    
+    #title{
+        text-align: left;
+        width: 100%;
+    }
+    
+    #search{
+        text-align: left;
+        width: 100%
+    }
+}
+

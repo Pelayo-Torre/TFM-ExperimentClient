@@ -7,9 +7,10 @@
     <p-messages  [(value)]="msgs" [enableService]="false"></p-messages>
 </div>
 <div id="divPrin">
+    <h2>{{ 'experiment.list.title' | translate }}</h2>
     <div id="header">
         <div id="title">
-            <h2>{{ 'experiment.list.title' | translate }}</h2>
+            <span>{{ 'experiment.list.explication' | translate }}</span>
         </div>
         <div id="search">
             <p-button label="{{ 'experiment.list.newExperiment' | translate }}" icon="pi pi-plus" routerLink="/experiments/register/"></p-button>
@@ -42,12 +43,9 @@
                 <tr [pSelectableRow]="rowData">
                     <td *ngFor="let col of columns">
                         <span *ngIf="col.field === 'status'" id="{{rowData[col.field]}}">{{ 'experiment.list.states.' + rowData[col.field] | translate  }} </span>
-                   
-                        <button  type="button" routerLink="/experiments/detail/{{ rowData['id'] }}" title="{{ 'experiment.list.edit' | translate  }}"
-                        *ngIf="col.field === 'acciones'" 
-                        class="buttonTableAction"><i class="pi pi-pencil"></i></button>
 
-                        <span *ngIf="col.field !== 'status' && col.field !== 'acciones'"> {{rowData[col.field]}} </span>
+                        <a *ngIf="col.field == 'title'" routerLink="/experiments/detail/{{ rowData['id'] }}" >{{rowData[col.field]}}</a>
+                        <span *ngIf="col.field !== 'status' && col.field !== 'title'"> {{rowData[col.field]}} </span>
                     </td>
                 </tr>
             </ng-template>

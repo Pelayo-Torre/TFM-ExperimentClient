@@ -67,12 +67,12 @@
             <h2>{{ 'experiment.data.title' | translate }}</h2>
         </div>
         <div id="boxButton" *ngIf="isCalculate">
-            <p-button label="{{ 'experiment.data.button' | translate }}" id="btCalculate" (click)="newCalculate()" ></p-button>
+            <p-button label="{{ 'experiment.data.return' | translate }}" id="btCalculate" (click)="newCalculate()" ></p-button>
         </div>
         <br>
         <div id="titleTable">
             <h5>{{ 'experiment.data.introduction' | translate }} <strong>{{sceneID}}</strong></h5>
-            <button *ngIf="hayDatos" type="button" title="{{ 'experiment.data.export' | translate }}" class="buttonTableAction" (click)="exportData()"><i class="pi pi-file-excel" style="font-size: 1.5rem"></i></button>
+            <a *ngIf="hayDatos" (click)="exportData()">{{ 'experiment.data.export' | translate }}</a>
         </div>
         <p *ngIf="!hayDatos">No se han encontrado datos.</p>
         <div class="containerTable" *ngIf="hayDatos">

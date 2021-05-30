@@ -10,7 +10,6 @@ const httpOptions = {
 @Injectable()
 export class LoginService {
 
-    //urlBase = 'https://hierbabuena.herokuapp.com/';
     urlBase = 'http://localhost:8090/';
 
     //Identifica si un usuario ha sido registrado

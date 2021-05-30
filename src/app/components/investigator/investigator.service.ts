@@ -7,7 +7,6 @@ import { InvestigatorAdd, Investigator } from './model/investigator'
 @Injectable()
 export class InvestigatorService {
 
-    //urlBase = 'https://hierbabuena.herokuapp.com/investigator';               //--PRODUCCIÓN
     urlBase = 'http://localhost:8090/investigator';                             //--LOCAL
     token;
 

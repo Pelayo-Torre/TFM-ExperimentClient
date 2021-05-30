@@ -59,12 +59,14 @@
         "mail" : "Correo electrónico",
         "password" : "Contraseña",
         "login" : "Iniciar sesión",
+        "newAccount": "Crear cuenta",
         "validations" : {
             "mail": "El correo electrónico es obligatorio",
             "password" : "La contraseña es obligatoria",
-            "wrongCredentials" : "Credenciales introducidos incorrectos"
+            "wrongCredentials" : "Credenciales introducidos incorrectos",
+            "userBlocked": "El usuario está bloqueado."
         },
-        "loginErr" : "Se ha producido un error. Por favor, inténtelo de nuevo."
+        "loginErr" : "Se ha producido un error. Por favor, inténtelo de nuevo."        
     },
     "investigator" : {
         "register" : {
@@ -118,6 +120,7 @@
         },
         "list": {
             "title" : "Lista de experimentos",
+            "explication": "Un experimento consiste en una serie de pruebas para captar y analizar la interacción de los usuarios en una página web.",
             "header.titleExperiment" : "Título",
             "header.description" : "Descripción",
             "header.creationDate" : "Fecha de creación",
@@ -200,15 +203,18 @@
             "creator" : "Creador",
             "creationDate" : "Fecha de creación",
             "script": "Fichero de toma de datos",
-            "download": "Descargar",
+            "download": "Agente de toma de datos",
             "update" : "Editar",
+            "update2": "Actualizar",
             "accept" : "Aceptar",
             "cancel" : "Cancelar",
             "updateErr": "Error al actualizar el experimento. Por favor, inténtelo de nuevo",
             "updateSuccess": "El experimento ha sido actualizado correctamente",
             "loadDataErr": "Error al cargar los datos del experimento. Por favor, inténtelo de nuevo",
             "confirmationChangeState" : "Confirmación",
-            "paragraphChangeState" : "¿Desea modificar el estado del experimento? No podrá realizar modificaciones en los datos del mismo."
+            "paragraphChangeState" : "¿Desea modificar el estado del experimento? No podrá realizar modificaciones en los datos del mismo.",
+            "deleteChangeState": "Confirmación",
+            "paragraphChangeStateDelete": "¿Desea eliminar el experimento?"
         },
         "detail" : "Detalle del experimento",
         "open": "El experimento fue abierto correctamente",
@@ -332,7 +338,8 @@
             "introduction" : "Datos calculados para la escena:",
             "abbreviation": "Abreviatura",
             "description": "Descripción",
-            "export" : "Exportar datos",
+            "export" : "Exportar CSV",
+            "return": "Volver",
             "calculateErr": "Error al calcular los datos. Por favor, inténtelo de nuevo",
             "usersErr": "Error al obtener los usuarios. Por favor, inténtelo de nuevo",
             "scenesErr": "Error al obtener las escenas. Por favor, inténtelo de nuevo",
@@ -452,7 +459,9 @@
         "selectionData": "Selección datos",
         "calculateData": "Cálculo datos",
         "petitionReceived": "Peticiones recibidas",
-        "petitionSent": "Peticiones enviadas"
+        "petitionSent": "Peticiones enviadas",
+        "requests": "Lista de solicitudes",
+        "newAdmin": "Crear un nuevo administrador"
     },
     "return": "Volver"
 }

@@ -59,10 +59,12 @@
         "mail" : "Mail",
         "password" : "Password",
         "login" : "Login",
+        "newAccount": "Create account",
         "validations" : {
             "mail": "Mail is required",
             "password" : "Password is required",
-            "wrongCredentials" : "Wrong credentials entered"
+            "wrongCredentials" : "Wrong credentials entered",
+            "userBlocked": "The user is blocked."
         },
         "loginErr" : "An error has occurred. Please try again."
     },
@@ -117,6 +119,7 @@
         },
         "list": {
             "title" : "Experiment list",
+            "explication": "An experiment consists of a series of tests to capture and analyze the interaction of users on a web page.",
             "header.titleExperiment" : "Title",
             "header.description" : "Description",
             "header.creationDate" : "Creation date",
@@ -199,15 +202,18 @@
             "creator" : "Creator",
             "creationDate" : "Creation date",
             "script": "Data collection file",
-            "download": "Download",
+            "download": "Data collection agent",
             "update" : "Update",
+            "update2": "Update",
             "accept" : "Accept",
             "cancel" : "Cancel",
             "updateErr": "Error updating experiment. Please try again",
             "updateSuccess": "The experiment has been updated successfully",
             "loadDataErr": "Error loading experiment data. Please try again",
             "confirmationChangeState" : "Confirmation",
-            "paragraphChangeState" : "Do you want to change the state of the experiment? You will not be able to make changes to its data."
+            "paragraphChangeState" : "Do you want to change the state of the experiment? You will not be able to make changes to its data.",
+            "deleteChangeState": "Confirmation",
+            "paragraphChangeStateDelete": "Do you want to delete the experiment?"
         },
         "detail" : "Experiment detail",
         "open": "The experiment has been opened successfully",
@@ -331,7 +337,8 @@
             "introduction" : "Calculated data for the scene:",
             "abbreviation": "Abbreviation",
             "description": "Description",
-            "export": "Export data",
+            "export": "Export CSV",
+            "return": "Return",
             "calculateErr": "Error calculating data. Please, try again",
             "usersErr": "Error getting users. Please, try again",
             "scenesErr": "Error getting scenes. Please, try again",
@@ -451,7 +458,9 @@
         "selectionData": "Data selection",
         "calculateData": "Experiment data",
         "petitionReceived": "Petitions received",
-        "petitionSent": "Petitions sent"
+        "petitionSent": "Petitions sent",
+        "requests": "Requests list",
+        "newAdmin": "Create a new administrator"
     },
     "return": "Return"
 }

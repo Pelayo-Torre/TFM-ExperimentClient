@@ -49,6 +49,9 @@ export class EditExperimentComponent implements OnInit{
     //Se utiliza para mostrar la ventana modal de confirmar cambio de estado
     displayModalOpenExperiment: boolean;
 
+    //Se utiliza para mostrar la ventana modal del confirmar eliminación de estado de experimento
+    displayModalDeleteExperiment: boolean;
+
     constructor(
         private experimentService: ExperimentService,
         private experimentDataService: ExperimentDataService,
@@ -67,6 +70,7 @@ export class EditExperimentComponent implements OnInit{
         this.experiment = new Experiment();
         this.updating = false;
         this.displayModalOpenExperiment = false;
+        this.displayModalDeleteExperiment = false;
         this.dataTypes = []
     }
 
@@ -96,7 +100,7 @@ export class EditExperimentComponent implements OnInit{
                 this.close();
             }
             else if(this.selectedAction['name'] === 'DELETE'){
-                this.delete();
+                this.displayModalDeleteExperiment = true;
             }
             else if(this.selectedAction['name'] === 'REOPEN'){
                 this.reopen();
@@ -151,13 +155,15 @@ export class EditExperimentComponent implements OnInit{
         this.experiment.surnameInvestigator = experiment['surnameInvestigator'];
 
         this.experiment.demographicData = [];
-        for(let i = 0; i<experiment['demographicData'].length; i++){
-            this.demographicData.push(this.createDemographicData(
-                experiment['demographicData'][i].name, 
-                experiment['demographicData'][i].type)) ;
-            this.experiment.demographicData.push(
-                new DemographicData(experiment['demographicData'][i].name, 
-                    experiment['demographicData'][i].type));
+        if(experiment['demographicData'] != null && experiment['demographicData'] != undefined){
+            for(let i = 0; i<experiment['demographicData'].length; i++){
+                this.demographicData.push(this.createDemographicData(
+                    experiment['demographicData'][i].name, 
+                    experiment['demographicData'][i].type)) ;
+                this.experiment.demographicData.push(
+                    new DemographicData(experiment['demographicData'][i].name, 
+                        experiment['demographicData'][i].type));
+            }
         }
     }
 
@@ -285,6 +291,11 @@ export class EditExperimentComponent implements OnInit{
         this.open();
     }
 
+    public deleteExperiment(){
+        this.displayModalDeleteExperiment = false;
+        this.delete();
+    }
+
     /**
      * Realiza la apertura del experimento.
      */
@@ -297,6 +308,8 @@ export class EditExperimentComponent implements OnInit{
                 this.experiment.status = 'OPEN'
                 //Recargamos las acciones en función del nuevo estado
                 this.loadActions();
+                //Se actualiza la lista de notes
+                this.experimentService.isStatusChanged = true;
                 //Lanzamos toast de que la edición fue correcta
                 this.translate.get('experiment.open').subscribe((data:any)=> {
                     this.show('success', 'Success', data);
@@ -342,6 +355,8 @@ export class EditExperimentComponent implements OnInit{
                 this.experiment.status = 'CLOSED'
                 //Recargamos las acciones en función del nuevo estado
                 this.loadActions();
+                //Se actualiza la lista de notes
+                this.experimentService.isStatusChanged = true;
                 //Lanzamos toast de que la edición fue correcta
                 this.translate.get('experiment.close').subscribe((data:any)=> {
                     this.show('success', 'Success', data);
@@ -367,6 +382,8 @@ export class EditExperimentComponent implements OnInit{
                 this.experiment.status = 'OPEN'
                 //Recargamos las acciones en función del nuevo estado
                 this.loadActions();
+                //Se actualiza la lista de notes
+                this.experimentService.isStatusChanged = true;
                 //Lanzamos toast de que la edición fue correcta
                 this.translate.get('experiment.reopen').subscribe((data:any)=> {
                     this.show('success', 'Success', data);

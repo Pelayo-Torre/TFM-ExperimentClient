@@ -5,15 +5,6 @@
     <div class="p-toolbar-group-left" id="titleToolbar"> 
         <h3>{{ 'experiment.detail' | translate }}</h3>
     </div>
-    <div *ngIf="manager === true" class="p-toolbar-group-right" id="buttonsToolbar">
-        <p-dropdown [options]="actions" [(ngModel)]="selectedAction" optionLabel="name" [showClear]="true" placeholder="{{ 'experiment.actions' | translate }}">
-            <ng-template let-action pTemplate="item">
-                <div class="action-item">
-                    <div><span >{{ 'experiment.' + action.value.name | translate }}</span></div>
-                </div>
-            </ng-template>
-        </p-dropdown>
-    </div>
 </div>
 <div id="divPrin" class="p-shadow-1">
     <div  id="boxForm" >
@@ -28,17 +19,27 @@
             </div>
             <div>
                 <label for="status"><strong>{{ 'experiment.edit.status' | translate }} </strong>
-                    <span class="{{experiment.status}}"> {{ 'experiment.list.states.' + experiment.status | translate  }} </span>
+                    <div id="statusManager">
+                        <div id="statusLabel">
+                            <span class="{{experiment.status}}"> {{ 'experiment.list.states.' + experiment.status | translate  }} </span>
+                        </div>
+                        <div id="statusCombo">
+                            <p-dropdown *ngIf="manager === true" [options]="actions" [(ngModel)]="selectedAction" optionLabel="name" [showClear]="true" placeholder="{{ 'experiment.actions' | translate }}">
+                                <ng-template let-action pTemplate="item">
+                                    <div class="action-item">
+                                        <div><span >{{ 'experiment.' + action.value.name | translate }}</span></div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                        </div>
+                    </div>
                 </label><br>
                 <label for="nameInvestigator"><strong>Creador  </strong>
                     <span>{{ experiment.nameInvestigator }} {{experiment.surnameInvestigator}} ( {{ experiment.mailInvestigator }} )</span>
                 </label><br>
                 <label for="creationDateInvestigator"><strong>{{ 'experiment.edit.creationDate' | translate }}  </strong>
                     <span>{{ experiment.creationDate | date: 'dd/MM/yyyy' }}</span>
-                </label><br>  
-                <label *ngIf="experiment.status === 'OPEN'" for="creationDateInvestigator"><strong>{{ 'experiment.edit.script' | translate }}  </strong>
-                    <a (click)="download()" id="download">{{ 'experiment.edit.download' | translate}}</a>
-                </label><br *ngIf="experiment.status === 'OPEN'">
+                </label><br> 
                 <label for="creationDateInvestigator"><strong>Datos Demográficos:</strong></label><br>
                 <ul>
                     <li *ngFor="let item of experiment.demographicData">
@@ -50,11 +51,10 @@
                 
             </div>
         </div>
-        <div class="boxButton" *ngIf="manager === true && experiment.status === 'CREATED'"  >
-            <button pButton type="button" class="p-button-secondary p-button-raised p-button-text" label="{{ 'experiment.edit.update' | translate }}" id="edition" (click)="activateEdition()" ></button>
-        </div>
-        <div class="boxButton" *ngIf="experiment.status === 'CLOSED' || experiment.status === 'OPEN'"  >
-            <button pButton type="button" class="p-button-secondary p-button-raised p-button-text" label="{{ 'experiment.edit.data' | translate }}" routerLink="/experiments/data/{{ experiment.id }}" ></button>
+        <div class="containerButtons">  
+            <button *ngIf="manager === true" pButton type="button" class="p-button-secondary p-button-raised p-button-text" label="{{ 'experiment.edit.update' | translate }}" (click)="activateEdition()" ></button>
+            <button *ngIf="experiment.status === 'OPEN'" pButton type="button" class="p-button p-button-primary" label="{{ 'experiment.edit.download' | translate}}" (click)="download()" ></button>
+            <button *ngIf="experiment.status === 'CLOSED' || experiment.status === 'OPEN'" pButton type="button" class="p-button-secondary p-button-raised p-button-text" label="{{ 'experiment.edit.data' | translate }}" routerLink="/experiments/data/{{ experiment.id }}" ></button>
         </div>
         <br>
     </div>
@@ -80,9 +80,9 @@
                     <span class="spanErr" *ngIf="updateExperiment.get('description').touched && updateExperiment.get('description').hasError('required')">{{ 'experiment.register.validations.description' | translate }}</span>
                 </div>
 
-                <button pButton class="p-button-text p-button-sm" type="button" id="addDemographicData" label="{{ 'experiment.register.newData' | translate }}" (click)="addDemographicData(null, null)" icon="pi pi-plus"></button>
+                <button *ngIf="experiment.status === 'CREATED'" pButton class="p-button-text p-button-sm" type="button" id="addDemographicData" label="{{ 'experiment.register.newData' | translate }}" (click)="addDemographicData(null, null)" icon="pi pi-plus"></button>
                 
-                <div class="containerAll" >
+                <div class="containerAll" *ngIf="experiment.status === 'CREATED'" >
                     <div class="containerDD" formArrayName="demographicData" *ngFor="let data of updateExperiment.get('demographicData')['controls']; let i = index">
                         <div [formGroupName]="i" >
                             <div class="demographicData">
@@ -109,8 +109,8 @@
                 </div>
                 <br>
             </div>
-            <div id="boxButton">
-                <p-button label="{{ 'experiment.edit.update' | translate }}" id="formButton" type="submit"  [disabled]=updateExperiment.invalid></p-button>
+            <div class="boxButton">
+                <p-button label="{{ 'experiment.edit.update2' | translate }}" id="formButton" type="submit"  [disabled]=updateExperiment.invalid></p-button>
             </div>
         </div>
     </form>
@@ -118,11 +118,20 @@
 
 
 
-<!-- VENTANA MODAL DE Cancelar una asociación -->
+<!-- VENTANA MODAL DE ABRIR UN EXPERIMENTO -->
 <p-dialog header="{{ 'experiment.edit.confirmationChangeState' | translate }}" [(visible)]="displayModalOpenExperiment" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <p>{{ 'experiment.edit.paragraphChangeState' | translate }}</p>
     <ng-template pTemplate="footer">
         <button pButton pRipple icon="pi pi-check" (click)="openExperiment()" label="{{ 'experiment.investigatorsAssociated.cancelAssociationYes' | translate }}" class="p-button-danger"></button>
         <button pButton pRipple icon="pi pi-times" (click)="displayModalOpenExperiment=false" label="{{ 'experiment.investigatorsAssociated.cancelAssociationNo' | translate }}" class="p-button-secondary"></button>
+    </ng-template>
+</p-dialog>
+
+<!-- VENTANA MODAL DE ELIMINAR UN EXPERIMENTO -->
+<p-dialog header="{{ 'experiment.edit.deleteChangeState' | translate }}" [(visible)]="displayModalDeleteExperiment" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p>{{ 'experiment.edit.paragraphChangeStateDelete' | translate }}</p>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple icon="pi pi-check" (click)="deleteExperiment()" label="{{ 'experiment.investigatorsAssociated.cancelAssociationYes' | translate }}" class="p-button-danger"></button>
+        <button pButton pRipple icon="pi pi-times" (click)="displayModalDeleteExperiment=false" label="{{ 'experiment.investigatorsAssociated.cancelAssociationNo' | translate }}" class="p-button-secondary"></button>
     </ng-template>
 </p-dialog>
