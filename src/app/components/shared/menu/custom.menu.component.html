@@ -11,7 +11,7 @@
       </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto" >
-        <li *ngIf="userInSession === true" class="nav-item dropdown">
+        <li *ngIf="userInSession === true" class="nav-item dropdown" id="experimentsNav">
             <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkE" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{ 'menu.experiments.title' | translate }}
             </a>
@@ -20,7 +20,7 @@
               <a class="dropdown-item" routerLink="experiments"  id="subMenu2">{{ 'menu.experiments.list' | translate }}</a>
             </div>
         </li>
-        <li *ngIf="userInSession === true" class="nav-item dropdown">
+        <li *ngIf="userInSession === true" class="nav-item dropdown" id="petitionsNav">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkP" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{ 'menu.petitions.title' | translate }}
             </a>
@@ -61,10 +61,10 @@
             <a class="nav-link" routerLink="/login"><i class="pi pi-user" > </i> {{ 'menu.login' | translate }}</a>
           </li>
           <li *ngIf="userInSession === false" class="nav-item">
-              <a class="nav-link" routerLink="investigator/register"><i class="pi pi-user" > </i> {{ 'menu.register' | translate }}</a>
+              <a class="nav-link" id="registerUser" routerLink="investigator/register"><i class="pi pi-user" > </i> {{ 'menu.register' | translate }}</a>
           </li>
           <li *ngIf="userInSession === true" class="nav-item">
-              <a class="nav-link" (click)="logout()" routerLink="/login"><i class="pi pi-power-off" > </i> {{ 'menu.out' | translate }}</a>
+              <a class="nav-link" id="logout" (click)="logout()" routerLink="/login"><i class="pi pi-power-off" > </i> {{ 'menu.out' | translate }}</a>
           </li>
         </ul>
       </span>
@@ -91,7 +91,7 @@
               </div>
               <div *ngIf="!updating">
                   <label for="nameInvestigator"><strong>{{ 'menu.profile.name' | translate }}  </strong>
-                    <span>{{investigator.name}}</span>
+                    <span id="firstnameSpan">{{investigator.name}}</span>
                   </label><br>
               </div>
               <div class="p-field" *ngIf="updating">
@@ -104,7 +104,7 @@
               </div>
               <div *ngIf="!updating">
                 <label><strong>{{ 'menu.profile.surname' | translate }}  </strong>
-                  <span>{{investigator.surname}}</span>
+                  <span id="lastname1Span">{{investigator.surname}}</span>
                 </label><br>
               </div> 
               <div class="p-field" *ngIf="updating">
@@ -119,7 +119,7 @@
               </div>  
               <div *ngIf="!updating">
                 <label for="nameInvestigator"><strong>{{ 'menu.profile.mail' | translate }}  </strong>
-                  <span>{{investigator.mail}}</span>
+                  <span id="mail1Span">{{investigator.mail}}</span>
                 </label><br>
               </div>  
               <div>
@@ -129,16 +129,16 @@
               </div>  
               <div>
                 <label for="nameInvestigator"><strong>{{ 'menu.profile.rol' | translate }}  </strong>
-                  <span *ngIf="investigator.role === 'INVESTIGATOR_EVALUATION'">{{ 'menu.profile.evaluation' | translate }}</span>
+                  <span *ngIf="investigator.role === 'INVESTIGATOR_EVALUATION'" id="pruebaRole">{{ 'menu.profile.evaluation' | translate }}</span>
                   <span *ngIf="investigator.role === 'INVESTIGATOR_VALIDATED'">{{ 'menu.profile.validated' | translate }}</span>
                   <span *ngIf="investigator.role === 'ADMINISTRATOR'">{{ 'menu.profile.administrator' | translate }}</span>
                 </label><br>
               </div>
           </div>
           <div id="boxButton">
-            <button pButton *ngIf="updating" class="p-button-sm" id="editButton" label="{{ 'menu.profile.edit' | translate }}" type="submit"  [disabled]=updateInvestigator.invalid></button>
+            <button pButton *ngIf="updating" class="p-button-sm" id="editButton" label="{{ 'menu.profile.edit2' | translate }}" type="submit"  [disabled]=updateInvestigator.invalid></button>
             <button pButton pRipple *ngIf="updating" label="{{ 'menu.profile.cancel' | translate }}" (click)="desactivateEdition()" class="p-button-secondary p-button-sm" ></button>
-            <button pButton *ngIf="!updating" class="p-button-sm" label="{{ 'menu.profile.edit' | translate }}" (click)="activateEdition()" ></button>
+            <button pButton *ngIf="!updating" class="p-button-sm" id="editBtn" label="{{ 'menu.profile.edit' | translate }}" (click)="activateEdition()" ></button>
         </div>
       </div>
   </form>

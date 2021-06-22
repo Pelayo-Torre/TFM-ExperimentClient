@@ -1,11 +1,26 @@
 {
+    "initial": {
+        "title": "Analytical Web",
+        "subtitle": "Study and analyze user interaction on websites by capturing data through an external library",
+        "register": "Sign Up",
+        "login": "Login",
+        "t1": "Create and manage your experiments.",
+        "p1": "The tool offers you the ability to create an experiment based on the demographics of the users who will participate in the experiment.",
+        "t2": "Invite other researchers to participate in the experiment.",
+        "p2": "You will be able to invite other researchers from the portal (and outside it) to participate in the study of an experiment. You will also have the possibility to keep track of it through the management of notes in the blog.",
+        "t3": "Make the calculations you want.",
+        "p3": "You can perform all kinds of calculations on the data obtained in the experiment for each user. In addition, you will have the possibility to visualize the trajectory of the mouse in each scene recorded in the experiment.",
+        "alt1": "Managing experiments",
+        "alt2": "Researchers and blog management",
+        "alt3": "Data calculation"
+    },
     "menu":{
         "experiments" : {
             "title" : "Experiments",
             "create": "Create new",
             "list": "List"
         },
-        "investigators" : "Investigators",
+        "investigators" : "Researchers",
         "petitions": {
             "title": "Petitions",
             "received" : "Received",
@@ -37,6 +52,7 @@
             "validated": "Validated",
             "administrator": "Administrator",
             "edit" : "Update",
+            "edit2": "Update",
             "cancel": "Cancel",
             "important": "Important: ",
             "mailAlreadyExist" : "The specified mail already exists in the system",
@@ -236,7 +252,7 @@
             "username": "User",
             "rol" : "Role",
             "gestor": "Manager",
-            "title" : "Associate investigators",
+            "title" : "Associate researchers",
             "newAssociation" : "New association",
             "associationSuccess" : "The association has been successfully registered",
             "associationErr" : "Error registering association. Please try again",
@@ -247,7 +263,7 @@
             "selectGestor": "Indicate if the researcher will be a manager by checking the following box:",
             "register": "Register",
             "cancel": "Cancel",
-            "notInvestigators": "No investigators found",
+            "notInvestigators": "No researchers found",
             "cancelAssociation" : "",
             "confirmCancelAssociation" : "Do you want to cancel the researcher's association in the experiment?",
             "cancelAssociationTitle" : "Cancelar asociación",
@@ -258,8 +274,8 @@
             "cancelAssociationKo": "Failed to cancel association. Please, try again."
         },
         "newPetition" : {
-            "title" : "Invite an investigator",
-            "parragraph" : "Enter the mail address of the investigator to collaborate on the experiment.",
+            "title" : "Invite an researcher",
+            "parragraph" : "Enter the mail address of the researcher to collaborate on the experiment.",
             "mail" : "Mail",
             "manager" : "Manager",
             "validations" : {
@@ -354,7 +370,7 @@
     "petition": {
         "sent": {
             "title": "Petitions sent",
-            "mail": "Investigator",
+            "mail": "Researcher",
             "titleExperiment": "Title",
             "descriptionExperiment": "Description",
             "shippingDate": "Date",
@@ -439,11 +455,11 @@
                 "mail" : "Write a mail"
             },
             "accept" : "Accept",
-            "acceptOk" : "The investigator has been successfully registered as an administrator.",
-            "acceptKo" : "An error occurred while registering the investigator as an administrator. Please try again.",
-            "empty" : "No investigators found.",
+            "acceptOk" : "The researcher has been successfully registered as an administrator.",
+            "acceptKo" : "An error occurred while registering the researcher as an administrator. Please try again.",
+            "empty" : "No researchers found.",
             "confirmationTitle" : "Confirmation",
-            "confirmation": "Do you want to convert the investigator to an administrator?",
+            "confirmation": "Do you want to convert the researcher to an administrator?",
             "yes": "Yes",
             "no": "No"
         }

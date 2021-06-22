@@ -69,10 +69,10 @@ export class InvestigatorsAssociatedComponent implements OnInit{
         this.loadInvestigatorsAssociated();
 
         this.cols = [
-            { field: 'name', header: 'name', width: '15%' },
-            { field: 'mail', header: 'mail', width: '30%' },
-            { field: 'manager', header: 'rol', width: '15%' },
-            { field: 'cancel', header: 'cancelAssociation', width: '10%' }
+            { id: 1, field: 'name', header: 'name', width: '20%' },
+            { id: 2, field: 'mail', header: 'mail', width: '45%' },
+            { id: 3, field: 'manager', header: 'rol', width: '20%' },
+            { id: 4, field: 'cancel', header: 'cancelAssociation', width: '15%' }
         ];
 
         this.petitionAlreadyExist = false;

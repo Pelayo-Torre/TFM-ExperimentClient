@@ -8,27 +8,13 @@
 /* SCROLL DE LA TABLA */
 .containerTable {
     margin: auto;
-    height: 500px;
-  }
-  
-.containerTable2 {
     position: relative;
-    overflow: auto;
     white-space: nowrap;
-}
-
-.sticky-col {
-    position: sticky;
-    position: -webkit-sticky;    
-    background-color: white;
+    overflow-x:auto;
+    overflow-y:auto;
+    max-height: 400px;
   }
   
-  .first-col {
-    width: 330px;
-    min-width: 330px;
-    max-width: 330px;
-    left: 0px;    
-  }
 
   .td, .td2, .th {
     border: 2px solid #dddddd;
@@ -39,7 +25,7 @@
   .td2{
     text-align: right;
   }
-
+ 
   /* BOX de selección */
 
   .selectionContainer{
@@ -81,6 +67,10 @@
   .titleBox{
     margin-top: 8px;
   }
+
+#exportData{
+  cursor: pointer;
+}
 
   /* SPINNER */
   @keyframes p-progress-spinner-color {
@@ -207,6 +197,22 @@
   #scenes{
     grid-column: 1;
     grid-row: 4;
+  }
+
+}
+
+@media screen and (min-width:400px){
+  .sticky-col {
+    position: sticky;
+    position: -webkit-sticky;    
+    background-color: white;
+  }
+  
+  .first-col {
+    width: 330px;
+    min-width: 330px;
+    max-width: 330px;
+    left: 0px;    
   }
 
 }

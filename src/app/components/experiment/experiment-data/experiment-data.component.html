@@ -72,31 +72,29 @@
         <br>
         <div id="titleTable">
             <h5>{{ 'experiment.data.introduction' | translate }} <strong>{{sceneID}}</strong></h5>
-            <a *ngIf="hayDatos" (click)="exportData()">{{ 'experiment.data.export' | translate }}</a>
+            <a *ngIf="hayDatos" (click)="exportData()" id="exportData">{{ 'experiment.data.export' | translate }}</a>
         </div>
         <p *ngIf="!hayDatos">No se han encontrado datos.</p>
         <div class="containerTable" *ngIf="hayDatos">
-            <div class="containerTable2">
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="sticky-col first-col headerTable th">Usuario</th>
-                            <th class="headerTable th" *ngFor="let header of headers2">
-                                    {{ header.name }}
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let col of result | keyvalue">
-                            <td class="sticky-col first-col td"> <a type="button" (click)="trace(col.key)" class="userTrace">{{ col.key }}</a></td>
-                            <td class="td2" *ngFor="let value of col.value">
-                                {{ value }}
-                            </td>
-                
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="sticky-col first-col headerTable th">Usuario</th>
+                        <th class="headerTable th" *ngFor="let header of headers2">
+                                {{ header.name }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let col of result | keyvalue">
+                        <td class="sticky-col first-col td"> <a type="button" (click)="trace(col.key)" class="userTrace">{{ col.key }}</a></td>
+                        <td class="td2" *ngFor="let value of col.value">
+                            {{ value }}
+                        </td>
+            
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <br>
         

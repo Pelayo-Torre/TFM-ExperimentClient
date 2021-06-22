@@ -12,8 +12,6 @@ export class ExperimentService {
 
     urlBase = 'http://localhost:8090/experiment';                             
 
-    token;
-
     //Sirve para identificar si un experimento ha sido creado o no
     experimentCreated: Boolean = false; 
 
@@ -61,7 +59,6 @@ export class ExperimentService {
         var url = this.urlBase + "/detail/" + id;
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/JSON');
-        headers.append('token', this.token);
         var resObservable = this.http.get(url, { headers: headers });
         return resObservable;
     }
@@ -126,7 +123,6 @@ export class ExperimentService {
         var url = this.urlBase + "/investigators/" + idExperiment;
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/JSON');
-        headers.append('token', this.token);
         return this.http.get<any>(url, { headers: headers })
         .toPromise()
         .then(res => <Investigator[]>res)
@@ -141,7 +137,6 @@ export class ExperimentService {
         var url = this.urlBase + "/investigators/not/associated/" + idExperiment;
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/JSON');
-        headers.append('token', this.token);
         return this.http.get<any>(url, { headers: headers })
         .toPromise()
         .then(res => <Investigator[]>res)
@@ -155,7 +150,6 @@ export class ExperimentService {
         var url = this.urlBase + "/all/types/demographicData";
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/JSON');
-        headers.append('token', this.token);
         return this.http.get<any>(url, { headers: headers })
         .toPromise()
         .then(res => <TypeDemographicData[]>res)

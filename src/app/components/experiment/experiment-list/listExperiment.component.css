@@ -28,7 +28,7 @@
 }
 
 /* INPUTS */
-.inputFilter{
+.inputFilter, .inputFilterDescription, .inputFilterTitle{
     width: 100%;
 }
 

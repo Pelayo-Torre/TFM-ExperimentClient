@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';  
 
 import { LoginComponent } from './login-files/login.component';
+import { InitialComponent } from '../initial/initial.component'
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
@@ -44,10 +45,10 @@ import { HttpClient } from '@angular/common/http';
           }),
     ],
     declarations: [
-        LoginComponent,
+        LoginComponent, InitialComponent
     ],
     entryComponents: [
-        LoginComponent
+        LoginComponent, InitialComponent
     ],
     providers: []
 })

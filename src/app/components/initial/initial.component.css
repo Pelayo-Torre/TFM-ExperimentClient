@@ -1,0 +1,71 @@
+#divPrin1{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#divPrin2{
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-right: 10%;
+}
+
+#textVideo{
+    justify-content: center;
+}
+
+#text{
+    width: 100%;
+    text-align: center;
+}
+
+#video{
+    height: auto;
+    width: 100%;
+}
+
+.image{
+    text-align: center;
+}
+
+img{
+    height: auto; 
+    width: 100%;
+}
+
+@media screen and (min-width:950px){
+
+    #textVideo{
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 35px;
+        width: 80%;
+    }
+
+    #text{
+        width: 39%;
+        margin-right: 4%;
+        text-align: center;
+    }
+    
+    #video{
+        height: auto;
+        width: 57%;
+    }
+
+}
+
+@media screen and (max-width:949px){
+    
+    #divPrin1{
+        margin-left: 10%;
+        margin-top: 5%;
+        margin-right: 10%;
+    }
+
+    #video{
+        margin-top: 20px;
+    }
+
+}

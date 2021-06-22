@@ -10,7 +10,7 @@ import { Investigator } from '../../investigator/model/investigator'
 import { Message } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
 
-
+ 
 @Component({
   selector: 'LoginComponente',
   templateUrl: './login.component.html',

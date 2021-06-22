@@ -6,12 +6,12 @@
         <h3>{{ 'experiment.investigatorsAssociated.title' | translate }}</h3>
     </div>
     <div *ngIf="manager === true" id="addAssociation">
-        <button pButton class="p-button-sm p-button-primary" label="{{ 'experiment.investigatorsAssociated.newAssociation' | translate }}" icon="pi pi-plus" type="button" (click)="showModalInvestigators()" ></button>
+        <button pButton class="p-button-sm p-button-primary" id="addAssociationBtn" label="{{ 'experiment.investigatorsAssociated.newAssociation' | translate }}" icon="pi pi-plus" type="button" (click)="showModalInvestigators()" ></button>
     </div>
 </div>
 <div   id="divInvestigators">
-    <p-table class="table" [columns]="cols" [value]="investigators" [scrollable]="true"  scrollHeight="520px"
-    [virtualScroll]="false" styleClass="p-datatable-gridlines" [responsive]="true">
+    <p-table [value]="investigators" class="table" [columns]="cols"   scrollHeight="500px"
+    [scrollable]="true"  styleClass="p-datatable-gridlines" [responsive]="true" [virtualScroll]="true" >
         <ng-template pTemplate="header" let-columns>
             <tr>
                 <th *ngFor="let col of columns" [ngStyle]="{'width': col.width}" class="headerTable">
@@ -22,10 +22,10 @@
         <ng-template pTemplate="body" let-rowData let-columns="columns">
             <tr>
                 <td *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
-                    <span *ngIf="col.field === 'manager' && rowData[col.field] === true"><strong>{{ 'experiment.investigatorsAssociated.gestor' | translate }}</strong></span>
-                    <span *ngIf="col.field === 'manager' && rowData[col.field] === false"></span>
-                    <span *ngIf="col.field !== 'manager'">{{rowData[col.field]}}</span>
-                    <button *ngIf="col.field === 'cancel' && manager === true"  type="button" title="{{ 'experiment.investigatorsAssociated.cancelAssociationTitle' | translate }}" class="buttonTableAction"  (click)="showModalCancelAssociation(rowData)"><i class="pi pi-times"></i></button>
+                    <span *ngIf="col.field === 'manager' && rowData[col.field] === true" class="col{{col.id}}"><strong>{{ 'experiment.investigatorsAssociated.gestor' | translate }}</strong></span>
+                    <span *ngIf="col.field === 'manager' && rowData[col.field] === false" class="col{{col.id}}"></span>
+                    <span *ngIf="col.field !== 'manager'" class="col{{col.id}}" >{{rowData[col.field]}}</span>
+                    <button *ngIf="col.field === 'cancel' && manager === true" class="col{{col.id}}" type="button" title="{{ 'experiment.investigatorsAssociated.cancelAssociationTitle' | translate }}" class="buttonTableAction"  (click)="showModalCancelAssociation(rowData)"><i class="pi pi-times"></i></button>
                 </td>
             </tr>
         </ng-template>
@@ -49,7 +49,7 @@
             <div class="p-field">
                 <label for="title"><strong>{{ 'experiment.newPetition.mail' | translate }}</strong></label>
                 <div class="p-inputgroup">
-                    <input id="title" type="text" maxlength=25 formControlName="mail" pInputText>
+                    <input id="mailInp" type="text" maxlength=25 formControlName="mail" pInputText>
                 </div>
                 <span class="spanErr" *ngIf="registerPetition.get('mail').touched && registerPetition.get('mail').hasError('required')">{{ 'experiment.newPetition.validations.mail' | translate }}</span>
                 <span class="spanErr" *ngIf="registerPetition.get('mail').touched && registerPetition.get('mail').hasError('pattern')">{{ 'experiment.newPetition.validations.mailFormat' | translate }}</span>
@@ -57,12 +57,12 @@
 
             </div>
             <div class="p-field-checkbox">
-                <p-checkbox name="group" value="true" formControlName="gestor" inputId="g"></p-checkbox>
+                <p-checkbox name="group" value="true" formControlName="gestor" inputId="g" class="chekManager"></p-checkbox>
                 <label for="g"><strong>{{ 'experiment.newPetition.manager' | translate }}</strong></label>
             </div>
         </div>
         <div id="boxButton">
-            <p-button label="{{ 'experiment.newPetition.register' | translate }}" id="formButton" type="submit"  [disabled]=registerPetition.invalid></p-button>
+            <p-button label="{{ 'experiment.newPetition.register' | translate }}" id="formButtonSendPeticion" type="submit"  [disabled]=registerPetition.invalid></p-button>
         </div>
     </form>
 </p-dialog>

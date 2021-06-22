@@ -1,0 +1,43 @@
+<div id="divPrin1">
+    <div id="textVideo">
+        <div id="text">
+            <h1>{{ 'initial.title' | translate }}</h1>
+            <h4>{{ 'initial.subtitle' | translate }}</h4>
+            <br> 
+            <div id="boxButton">
+                <p-button label="{{ 'initial.register' | translate }}" id="formButton" type="button" (click)="register()" router-link="investigator/register" ></p-button>
+                <br><br>
+                <a id="login" routerLink="/login">{{ 'initial.login' | translate }}</a>
+            </div>
+        </div>
+        <video id="video" width="300" controls>
+            <source src="../../../assets/video/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+    </div> 
+</div>
+<div id="divPrin2">
+    <h5>{{ 'initial.t1' | translate }}</h5>
+    <h6>{{ 'initial.p1' | translate }}</h6>
+    <div class="image">
+        <img src="../../../assets/img/experimentos.PNG" alt="{{ 'initial.alt1' | translate }}"/>
+    </div>
+    <br>
+    <h5>{{ 'initial.t2' | translate }}</h5>
+    <h6>{{ 'initial.p2' | translate }}</h6>
+    <div class="image">
+        <img src="../../../assets/img/investigadores.PNG" alt="{{ 'initial.alt2' | translate }}"/>
+    </div>
+    <br>
+    <h5>{{ 'initial.t3' | translate }}</h5>
+    <h6>{{ 'initial.p3' | translate }}</h6>
+    <div class="image">
+        <img src="../../../assets/img/data.PNG" alt="{{ 'initial.alt3' | translate }}" />
+    </div>
+    <br>
+    <br>
+    <br>
+</div>
+
+

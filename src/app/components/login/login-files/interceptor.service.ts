@@ -29,7 +29,6 @@ export class Interceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler)  {
         var req2 = req;
         const token = this.token.getToken();
-
         if (token != null) {
             req2 = req.clone({headers:req.headers.set(header, 'Bearer ' + token) });
         }

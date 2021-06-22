@@ -5,7 +5,7 @@
         <h3>{{ 'experiment.binnacle.title' | translate  }}</h3>
     </div>
     <div id="buttonNoteAdd">
-        <button pButton class="p-button-sm"  label="{{ 'experiment.binnacle.newNote' | translate  }}" (click)="showModalNote()" icon="pi pi-plus"></button>
+        <button pButton class="p-button-sm"  id="addNoteBtn" label="{{ 'experiment.binnacle.newNote' | translate  }}" (click)="showModalNote()" icon="pi pi-plus"></button>
     </div>
 </div>
 <div id="contentTable">
@@ -18,16 +18,16 @@
                         <p-panel>
                             <p-header class="headerPanel">
                                 <div class="title">
-                                    <span class="ui-panel-title"><strong> {{rowData['title']}}</strong></span>
+                                    <span class="ui-panel-title titleNote"><strong> {{rowData['title']}}</strong></span>
                                     <br><span>{{rowData['creationDate'] | date: 'dd/MM/yyyy HH:mm'}} - {{rowData['author']}}</span>
                                 </div>
                                 <div class="actions">
-                                    <button pButton type="button" label="{{ 'experiment.binnacle.update' | translate  }}" class="p-button-text p-button-plain" icon="pi pi-pencil" (click)="showModalEditNote(rowData)"></button>
-                                    <button pButton type="button" label="{{ 'experiment.binnacle.delete' | translate  }}" class="p-button-text p-button-plain" icon="pi pi-trash" (click)="showModalDeleteNote(rowData)" > </button>
+                                    <button pButton type="button" label="{{ 'experiment.binnacle.update' | translate  }}" class="p-button-text p-button-plain editNoteBtn" icon="pi pi-pencil" (click)="showModalEditNote(rowData)"></button>
+                                    <button pButton type="button" label="{{ 'experiment.binnacle.delete' | translate  }}" class="p-button-text p-button-plain deleteNoteBtn" icon="pi pi-trash" (click)="showModalDeleteNote(rowData)" > </button>
                                 </div>
                             </p-header>
                             <div>
-                                {{rowData['description']}}
+                                <span class="descriptionNote">{{rowData['description']}}</span>
                             </div>
                         </p-panel>
                     </div>
@@ -51,21 +51,21 @@
                 <div class="p-field">
                     <label for="title"><strong>{{ 'experiment.binnacle.registerNote.titleNote' | translate }}</strong></label>
                     <div class="p-inputgroup">
-                        <input id="title" type="text" maxlength=30 formControlName="title" pInputText>
+                        <input id="titleNote" type="text" maxlength=30 formControlName="title" pInputText>
                     </div>
                     <span class="spanErr" *ngIf="registerNote.get('title').touched && registerNote.get('title').hasError('required')">{{ 'experiment.binnacle.registerNote.validations.title' | translate }}</span>
                 </div>
                 <div class="p-field">
                     <label for="description"><strong>{{ 'experiment.binnacle.registerNote.descriptionNote' | translate }}</strong></label>
                     <div class="p-inputgroup">
-                        <textarea id="description" rows="5" cols="30" pInputTextarea formControlName="description" autoResize="autoResize" maxlength=9999></textarea>
+                        <textarea id="descriptionNote" rows="5" cols="30" pInputTextarea formControlName="description" autoResize="autoResize" maxlength=9999></textarea>
                     </div>
                     <span class="spanErr" *ngIf="registerNote.get('description').touched && registerNote.get('description').hasError('required')">{{ 'experiment.binnacle.registerNote.validations.description' | translate }}</span>
                 </div>
             </div>
             <div id="boxButton">
-                <p-button *ngIf="!updating" label="{{ 'experiment.binnacle.registerNote.register' | translate }}" id="formButton" type="submit"  [disabled]=registerNote.invalid></p-button>
-                <p-button *ngIf="updating" label="{{ 'experiment.binnacle.updateNote.update' | translate }}" id="formButton" type="submit"  [disabled]=registerNote.invalid></p-button>
+                <p-button *ngIf="!updating" label="{{ 'experiment.binnacle.registerNote.register' | translate }}" id="formButtonAddNote" type="submit"  [disabled]=registerNote.invalid></p-button>
+                <p-button *ngIf="updating" label="{{ 'experiment.binnacle.updateNote.update' | translate }}" id="formButtonUpdateNote" type="submit"  [disabled]=registerNote.invalid></p-button>
             </div>
         </div>
     </form>
@@ -75,7 +75,7 @@
 <p-dialog header="{{ 'experiment.binnacle.deleteNote.title' | translate }}" [(visible)]="displayDeleteConfirmation" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <p>{{ 'experiment.binnacle.deleteNote.description' | translate }}</p>
     <ng-template pTemplate="footer">
-        <button pButton pRipple icon="pi pi-check" (click)="delete()" label="{{ 'experiment.binnacle.deleteNote.yes' | translate }}" class="p-button-danger"></button>
+        <button pButton pRipple icon="pi pi-check" id="confirmDeleteBtn" (click)="delete()" label="{{ 'experiment.binnacle.deleteNote.yes' | translate }}" class="p-button-danger"></button>
         <button pButton pRipple icon="pi pi-times" (click)="displayDeleteConfirmation=false" label="{{ 'experiment.binnacle.deleteNote.no' | translate }}" class="p-button-secondary"></button>
     </ng-template>
 </p-dialog>

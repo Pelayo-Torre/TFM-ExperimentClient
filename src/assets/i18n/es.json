@@ -1,4 +1,19 @@
 {
+    "initial": {
+        "title": "Analítica Web",
+        "subtitle": "Estudia y analiza la interacción de los usuarios en los sitios web mediante la captación de datos a través de una biblioteca externa",
+        "register": "Regístrate",
+        "login": "Iniciar sesión",
+        "t1": "Crea y gestiona tus experimentos.",
+        "p1": "La herramienta te ofrece la posibilidad de crear un experimento en función de los datos demográficos de los usuarios que participarán en el experimento.",
+        "t2": "Invita a otros investigadores a participar en el experimento.",
+        "p2": "Podrás invitar a otros investigadores del portal (y fuera del mismo) a participar en el estudio de un experimento. También tendrás la posibilidad de realizar un seguimiento del mismo a través de la gestión de notas de la bitácora.",
+        "t3": "Realiza los cálculos que desees.",
+        "p3": "Podrás realizar todo tipo de cálculos sobre los datos obtenidos en el experimento para cada usuario. Además, tendrás la posibilidad de visualizar la trayectoria del ratón en cada escena registrada en el experimento.",
+        "alt1": "Gestión de experimentos",
+        "alt2": "Gestión de investigadores y bitácora",
+        "alt3": "Cálculo de datos"
+    },
     "menu":{
         "experiments" : {
             "title" : "Experimentos",
@@ -37,6 +52,7 @@
             "validated": "Validado",
             "administrator": "Administrador",
             "edit" : "Editar",
+            "edit2" : "Actualizar",
             "cancel": "Cancelar",
             "important": "Importante: ",
             "mailAlreadyExist" : "El nombre de usuario especificado ya existe en el sistema",

@@ -50,7 +50,7 @@
                     <label for="password2"><strong>{{ 'investigator.register.repeatPassword' | translate }}</strong></label>
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                        <input id="password2" type="password" maxlength=50 formControlName="repeatPassword" pPassword />
+                        <input id="password2" type="password" maxlength=50 formControlName="repeatPassword" pInputText />
                     </div>
                     <span class="spanErr" *ngIf="registerInvestigator.get('repeatPassword').touched && registerInvestigator.get('repeatPassword').hasError('required')">{{ 'investigator.register.validations.password' | translate }}</span>
                     <span class="spanErr" *ngIf="passwordsIncorrects === true">{{ 'investigator.register.validations.samesPasswords' | translate }}</span>

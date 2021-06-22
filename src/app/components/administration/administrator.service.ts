@@ -73,7 +73,6 @@ export class AdministrationService {
         var url = this.urlBase + "/requests";
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/JSON');
-        headers.append('token', this.token);
         return this.http.get<any>(url, { headers: headers })
             .toPromise()
             .then(res => <Request[]>res)

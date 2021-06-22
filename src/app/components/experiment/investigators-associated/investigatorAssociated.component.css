@@ -28,6 +28,10 @@
     text-align: right;
 }
 
+.p-datatable-scrollable-header-box{
+    padding: 0px !important;
+}
+
 @media screen and (max-width:500px){
     #titleInvestigators{
         display: inline;

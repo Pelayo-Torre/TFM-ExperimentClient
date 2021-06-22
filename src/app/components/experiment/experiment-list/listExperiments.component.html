@@ -13,7 +13,7 @@
             <span>{{ 'experiment.list.explication' | translate }}</span>
         </div>
         <div id="search">
-            <p-button label="{{ 'experiment.list.newExperiment' | translate }}" icon="pi pi-plus" routerLink="/experiments/register/"></p-button>
+            <p-button id="addExperiment" label="{{ 'experiment.list.newExperiment' | translate }}" icon="pi pi-plus" routerLink="/experiments/register/"></p-button>
         </div>
     </div>
 
@@ -28,12 +28,12 @@
                 </tr>
                 <tr>
                     <th class="headerTable" *ngFor="let col of columns" [ngSwitch]="col.field">
-                        <input class="inputFilter" *ngSwitchCase="'title'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'experiment.list.inputTitle' | translate  }}">
-                        <input class="inputFilter" *ngSwitchCase="'description'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'experiment.list.inputDescription' | translate  }}">
+                        <input class="inputFilterTitle" *ngSwitchCase="'title'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'experiment.list.inputTitle' | translate  }}">
+                        <input class="inputFilterDescription" *ngSwitchCase="'description'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'experiment.list.inputDescription' | translate  }}">
                         <input class="inputFilter"*ngSwitchCase="'formatDate'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{ 'experiment.list.inputDate' | translate  }}">
-                        <p-dropdown autoWidth="false" [style]="{'width':'100%'}" [options]="statuses" *ngSwitchCase="'status'" (onChange)="dt.filter($event.value, col.field, 'equals')" styleClass="p-column-filter" placeholder="{{ 'experiment.list.inputState' | translate  }}" [showClear]="true">
+                        <p-dropdown id="statuses" autoWidth="false" [style]="{'width':'100%'}" [options]="statuses" *ngSwitchCase="'status'" (onChange)="dt.filter($event.value, col.field, 'equals')" styleClass="p-column-filter" placeholder="{{ 'experiment.list.inputState' | translate  }}" [showClear]="true">
                             <ng-template let-option pTemplate="item">
-                                <span id="re">{{ 'experiment.list.states.' + option.label | translate }}</span>
+                                <span id="status-{{option.label}}">{{ 'experiment.list.states.' + option.label | translate }}</span>
                             </ng-template>
                         </p-dropdown>
                     </th>
@@ -41,11 +41,10 @@
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr [pSelectableRow]="rowData">
-                    <td *ngFor="let col of columns">
-                        <span *ngIf="col.field === 'status'" id="{{rowData[col.field]}}">{{ 'experiment.list.states.' + rowData[col.field] | translate  }} </span>
-
-                        <a *ngIf="col.field == 'title'" routerLink="/experiments/detail/{{ rowData['id'] }}" >{{rowData[col.field]}}</a>
-                        <span *ngIf="col.field !== 'status' && col.field !== 'title'"> {{rowData[col.field]}} </span>
+                    <td *ngFor="let col of columns"> 
+                        <span *ngIf="col.field === 'status'" class="col{{col.id}}" id="{{rowData[col.field]}}">{{ 'experiment.list.states.' + rowData[col.field] | translate  }} </span>
+                        <a *ngIf="col.field === 'title'" class="col{{col.id}}" routerLink="/experiments/detail/{{ rowData['id'] }}" >{{rowData[col.field]}}</a>
+                        <span *ngIf="col.field !== 'status' && col.field !== 'title'" class="col{{col.id}}"> {{rowData[col.field]}} </span>
                     </td>
                 </tr>
             </ng-template>

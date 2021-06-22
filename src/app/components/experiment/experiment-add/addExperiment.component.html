@@ -17,7 +17,7 @@
                 <div class="p-field">
                     <label for="title"><strong>{{ 'experiment.register.titleExperiment' | translate }}</strong></label>
                     <div class="p-inputgroup">
-                        <input id="title" type="text" maxlength=120 formControlName="title" pInputText>
+                        <input id="titleInput" type="text" maxlength=120 formControlName="title" pInputText>
                     </div>
                     <span class="spanErr" *ngIf="registerExperiment.get('title').touched && registerExperiment.get('title').hasError('required')">{{ 'experiment.register.validations.title' | translate }}</span>
                 </div>
@@ -37,19 +37,19 @@
                             <div class="demographicData">
                                 <div class="value">
                                     <label><strong>{{ 'experiment.register.value' | translate }}</strong></label>
-                                    <input class="inputFilter" type="text" maxlength=40 formControlName="name" pInputText>
+                                    <input class="inputFilter{{i}}" type="text" maxlength=40 formControlName="name" pInputText>
                                 </div>
                                 <div class="type">
                                     <label for="type{{i}}"><strong>{{ 'experiment.register.type' | translate }}</strong></label>
                                     <p-dropdown formControlName="type" id="type{{i}}" autoWidth="false" [style]="{'width':'100%'}"  [options]="dataTypes" >
                                         <ng-template let-option pTemplate="item">
-                                            <span>{{ 'experiment.register.' + option.value | translate }}</span>
+                                            <span class="type-{{option.value}}">{{ 'experiment.register.' + option.value | translate }}</span>
                                         </ng-template>
                                     </p-dropdown>
                                 </div>
                                 <div class="delete">
                                     <button type="button" (click)="deleteDemographicData(i)" title="{{ 'experiment.register.delete' | translate }}"
-                                        class="buttonTableAction"><i class="pi pi-times"></i></button>
+                                        class="buttonTableAction" id="delete{{i}}"><i class="pi pi-times"></i></button>
                                 </div>
                             </div>
                             <span class="spanErr" *ngIf="registerExperiment.get('demographicData')['controls'][i].get('name').touched && registerExperiment.get('demographicData')['controls'][i].get('name').hasError('required')">{{ 'experiment.register.validations.valueErr' | translate }}</span>

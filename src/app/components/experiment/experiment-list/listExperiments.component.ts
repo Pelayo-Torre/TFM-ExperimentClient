@@ -51,10 +51,10 @@ export class ListExperimentComponent implements OnInit{
             
 
         this.cols = [
-            { field: 'title', header: 'titleExperiment', width: '22.5%' },
-            { field: 'description', header: 'description', width: '42.5%' },
-            { field: 'formatDate', header: 'creationDate', width: '17.5%'},
-            { field: 'status', header: 'state', width: '17.5%' },
+            { id: 1, field: 'title', header: 'titleExperiment', width: '22.5%' },
+            { id: 2, field: 'description', header: 'description', width: '42.5%' },
+            { id: 3, field: 'formatDate', header: 'creationDate', width: '17.5%'},
+            { id: 4, field: 'status', header: 'state', width: '17.5%' },
         ]; 
 
         this.statuses = [
@@ -63,13 +63,6 @@ export class ListExperimentComponent implements OnInit{
             {label: 'closed', value: 'CLOSED'}
         ]
 
-        this.items = [
-            {label: 'Computer'},
-            {label: 'Notebook'},
-            {label: 'Accessories'},
-            {label: 'Backpacks'},
-            {label: 'Item'}
-        ];
 
         this.home = {icon: 'pi pi-home'};
     }

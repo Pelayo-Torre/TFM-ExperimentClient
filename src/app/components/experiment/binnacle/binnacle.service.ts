@@ -8,8 +8,6 @@ export class BinnacleService {
 
     urlBase = 'http://localhost:8090/binnacle';                             //--LOCAL
 
-    token;
-
     //Sirve para identificar si una nota ha sido creado o no
     noteCreated: Boolean = false; 
 
@@ -25,7 +23,6 @@ export class BinnacleService {
         var url = this.urlBase + "/register/note";
         var body = note;
         var headers = new HttpHeaders();
-        headers.append('token', this.token);
         headers.append('Content-Type', 'application/JSON');
         var resObservable = this.http.post(url, body, { headers: headers });
         return resObservable;
@@ -40,7 +37,6 @@ export class BinnacleService {
         var body = note;
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/JSON');
-        headers.append('token', this.token);
         var resObservable = this.http.put(url, body, { headers: headers });
         return resObservable;
     }
@@ -54,7 +50,6 @@ export class BinnacleService {
         var body = id;
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/JSON');
-        headers.append('token', this.token);
         var resObservable = this.http.put(url, body, { headers: headers });
         return resObservable;
     }
@@ -69,7 +64,6 @@ export class BinnacleService {
         var url = this.urlBase + "/notes/experiment/" + idExperiment;
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/JSON');
-        headers.append('token', this.token);
         return this.http.get<any>(url, { headers: headers })
         .toPromise()
         .then(res => <Note[]>res)

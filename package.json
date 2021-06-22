@@ -27,6 +27,7 @@
     "bootstrap": "^4.5.2",
     "export-to-csv": "^0.2.1",
     "file-saver": "^2.0.5",
+    "jasmine": "^3.7.0",
     "jquery": "^3.5.1",
     "primeflex": "^2.0.0-rc.1",
     "primeicons": "^4.0.0",

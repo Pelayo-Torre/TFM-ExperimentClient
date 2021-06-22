@@ -39,8 +39,8 @@
             <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr [pSelectableRow]="rowData">
                     <td *ngFor="let col of columns">
-                        <span *ngIf="col.field === 'mail'"> {{rowData['mail']}} </span>
-                        <span *ngIf="col.field === 'title'"> {{rowData['title']}} </span>
+                        <span *ngIf="col.field === 'mail'" class="mail-investigator"> {{rowData['mail']}} </span>
+                        <span *ngIf="col.field === 'title'" class="title-experiment"> {{rowData['title']}} </span>
                         <span *ngIf="col.field === 'description'"> {{rowData['description']}} </span>
                         <span *ngIf="col.field === 'formatDate'">{{ rowData[col.field] }}</span>
                         <span *ngIf="col.field === 'manager' && rowData['manager'] === true"><strong>{{ 'petition.sent.manager' | translate  }}</strong></span>
@@ -48,11 +48,11 @@
                         
                         <button type="button" (click)="showConfirmationModal(rowData)" title="{{ 'petition.sent.cancelButton' | translate  }}"
                         *ngIf="col.field === 'actions' && rowData['statusPetition'] !== 'CANCELLED' && rowData['statusPetition'] !== 'REJECTED' && petitionSent"
-                        class="buttonTableAction"><i class="pi pi-times"></i></button>
+                        class="buttonTableAction cancelBtn"><i class="pi pi-times"></i></button>
 
                         <button type="button" (click)="showAcceptConfirmationModal(rowData)" title="{{ 'petition.received.acceptButton' | translate  }}"
                         *ngIf="col.field === 'actions' && (rowData['statusPetition'] === 'PENDING') && !petitionSent" 
-                        class="buttonTableAction"><i class="pi pi-check"></i></button>
+                        class="buttonTableAction acceptBtn"><i class="pi pi-check"></i></button>
 
                         <button type="button" (click)="showRejectConfirmationModal(rowData)" title="{{ 'petition.received.rejectButton' | translate  }}"
                         *ngIf="col.field === 'actions' && (rowData['statusPetition'] === 'PENDING') && !petitionSent"
@@ -60,7 +60,7 @@
 
                         <button type="button" (click)="showConfirmationModal(rowData)" title="{{ 'petition.sent.cancelButton' | translate  }}"
                         *ngIf="col.field === 'actions' && (rowData['statusPetition'] === 'ACCEPTED') && !petitionSent" 
-                        class="buttonTableAction"><i class="pi pi-times"></i></button>
+                        class="buttonTableAction cancelBtn"><i class="pi pi-times"></i></button>
  
                     </td>
                 </tr>
@@ -80,7 +80,7 @@
 <p-dialog header="{{ 'petition.sent.confirmation' | translate }}" [(visible)]="displayCancelConfirmation" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <p>{{ 'petition.sent.cancelPetition' | translate }}</p>
     <ng-template pTemplate="footer">
-        <button pButton pRipple icon="pi pi-check" (click)="cancelPetition()" label="{{ 'petition.sent.yes' | translate }}" class="p-button-danger"></button>
+        <button pButton pRipple icon="pi pi-check" id="cancelConfirmBtn" (click)="cancelPetition()" label="{{ 'petition.sent.yes' | translate }}" class="p-button-danger"></button>
         <button pButton pRipple icon="pi pi-times" (click)="displayCancelConfirmation=false" label="{{ 'petition.sent.no' | translate }}" class="p-button-secondary"></button>
     </ng-template>
 </p-dialog>
@@ -89,7 +89,7 @@
 <p-dialog *ngIf="!petitionSent" header="{{ 'petition.sent.confirmation' | translate }}" [(visible)]="displayAcceptConfirmation" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <p>{{ 'petition.received.acceptPetition' | translate }}</p>
     <ng-template pTemplate="footer">
-        <button pButton pRipple icon="pi pi-check" (click)="acceptPetition()" label="{{ 'petition.sent.yes' | translate }}" class="p-button-danger"></button>
+        <button pButton pRipple icon="pi pi-check" id="acceptConfirmBtn" (click)="acceptPetition()" label="{{ 'petition.sent.yes' | translate }}" class="p-button-danger"></button>
         <button pButton pRipple icon="pi pi-times" (click)="displayAcceptConfirmation=false" label="{{ 'petition.sent.no' | translate }}" class="p-button-secondary"></button>
     </ng-template>
 </p-dialog>
